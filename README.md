@@ -41,7 +41,7 @@ Docs Are still in Development Try heading over to `/examples` for some idea.
 
 To install with,
 
-pip: `pip install lemon-library`
+pip: `pip install Lemon-Library`
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
