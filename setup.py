@@ -4,7 +4,7 @@ long_description = open('README.md', "r", encoding="utf-8").read()
 
 setup(
     name="Lemon-Library",
-    version="1.0.0-beta",
+    version="1.0.1-beta",
     author="Sasen Perera",
     author_email="sas8.communications@gmail.com",
     description="An experimental Full-Stack Framework for Python",
