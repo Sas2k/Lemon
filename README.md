@@ -11,6 +11,7 @@
 [![GitHub Issues](https://img.shields.io/github/issues/Sas2k/Lemon.svg)](https://github.com/kylelobo/The-Documentation-Compendium/issues)
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/Sas2k/Lemon.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
+![Pypi Monthly Downloads](https://img.shields.io/pypi/dm/Lemon-Library.svg)
 
 </div>
 
