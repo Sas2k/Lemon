@@ -37,7 +37,7 @@ A framework that can generate html with python code and have capabilities of a W
 
 ## 🗒 To-Do <a name = "To-Do"></a>
 
-- [ ] Add styling options
+- [ ] Add UI Libraries and add complex front-end stuff
 - [ ] Models (Databases)
 - [ ] API
 - [ ] Docs
