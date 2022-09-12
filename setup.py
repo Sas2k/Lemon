@@ -1,10 +1,12 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 long_description = open('README.md', "r", encoding="utf-8").read()
 
 setup(
     name="Lemon-Library",
-    version="1.0.1-beta",
+    version="2.0.0-Beta",
+    packages=find_packages(),
+    install_requires=open('requirements.txt').read().splitlines(),
     author="Sasen Perera",
     author_email="sas8.communications@gmail.com",
     description="An experimental Full-Stack Framework for Python",

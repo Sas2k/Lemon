@@ -25,6 +25,7 @@
 
 - [📝 Table of Contents](#-table-of-contents)
 - [🧐 About <a name = "about"></a>](#-about-)
+- [🗒 To-Do <a name = "To-Do"></a>](#-to-do-)
 - [🏁 Getting Started <a name = "getting_started"></a>](#-getting-started-)
   - [Installing](#installing)
 - [⛏️ Built Using <a name = "built_using"></a>](#️-built-using-)
@@ -32,11 +33,47 @@
 
 ## 🧐 About <a name = "about"></a>
 
-A framework that can generate html with python code and have capabilities of a Web Server.
+A framework that can generate html with python code and have capabilities of a Web Server. The library is shipped with Bootstrap 5 for your styling needs.
+
+## 🗒 To-Do <a name = "To-Do"></a>
+
+- [ ] Add styling options
+- [ ] Models (Databases)
+- [ ] API
+- [ ] Docs
+- [ ] Get to V1.0.0
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
 Docs Are still in Development Try heading over to `/examples` for some idea.
+Here is an example below
+
+```python
+from Lemon.components import Component
+from Lemon.server import Server
+
+app = Server()
+Root = Component("Home Page") #Root component: The component where your other components are rendered: The name inside is the name displayed on the tab
+
+class Home(Component):
+    "Home Page Component"
+    name = "Home" # Name of the component : REQUIRED
+    components = {} # components dictionary : REQUIRED
+    
+    def item(props: dict): #item function where the renderer calls to get your html and other code
+        return """
+            <h1>Hello World!</h1>
+        """
+
+Root.add(Home) #Add the Home component to the Root component
+
+@app.route("/") #Route decorator
+def index(request, response):
+    home_page = Root.render("<Home/>")
+    response.text = home_page
+
+app.run() #runs the app
+```
 
 ### Installing
 

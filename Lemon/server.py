@@ -57,6 +57,10 @@ class Server:
 
     def run(self, host="127.0.0.1", port=8000):
         "Runs app with waitress"
-        print(f"Running on http://{host}:{port}")
-        serve(self, host=host, port=port)
+        print(f"Running on http://localhost:{port} | http://127.0.0.1:{port}" if host=="127.0.0.1" else f"Running on http://{host}:{port}")
+        print("To stop server press Ctrl+C")
+        try:
+            serve(self, host=host, port=port)
+        except Exception as e:
+            print(f"Lemon.Server: {e}")
         print(f"Server Ended")

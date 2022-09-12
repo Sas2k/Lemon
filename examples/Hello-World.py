@@ -1,25 +1,28 @@
-from Lemon.component import Component
+from Lemon.components import Component
 from Lemon.server import Server
 
 app = Server()
+Root = Component("Home")
 
 class home(Component):
-    def __init__(self):
-        self.name = "home"
+    
+    name = "home"
+    components = {}
 
-    def item(self):
-        return {
-            "title": "Home",
-            "h1": "Hello World!",
-            "p": "This is generated in Python!",
-            "p": "*This is in BOLD*",
-            "p": "_This is in ITALICS_",
-            "a": "https://github.com/Sas2k|My Github Profile"
-        }
+    def item(props: dict):
+        return """
+            <h1>Hello World!</h1>
+            <p>This is generated in Python!</p>
+            <p><strong>This is in BOLD</strong></p>
+            <p><em>This is in ITALICS</em></p>
+            <a href=\"https://github.com/Sas2k\">My Github Profile</a>
+        """
+
+Root.add(home)
 
 @app.route("/")
 def student(request, response):
-    home_page = home().render()
+    home_page = Root.render("<home/>")
     response.text = home_page
 
 app.run()
