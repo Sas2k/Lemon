@@ -35,11 +35,18 @@
 
 A framework that can generate html with python code and have capabilities of a Web Server. The library is shipped with Bootstrap 5 for your styling needs.
 
+Features:
+- UI Library (Development)
+- A full Back-end Capabilities except ORM( try using sqlite or something like that)
+- React like syntax
+- middleware api
+
 ## 🗒 To-Do <a name = "To-Do"></a>
 
-- [ ] Add UI Libraries and add complex front-end stuff
+- [ ] Form Data Handling
+- [ ] complex front-end stuff
 - [ ] Models (Databases)
-- [ ] API
+- [x] API
 - [ ] Docs
 - [ ] Get to V1.0.0
 
@@ -52,7 +59,7 @@ Here is an example below
 from Lemon.components import Component
 from Lemon.server import Server
 
-app = Server()
+app = Server(static_dir=None) #set the static_dir to none if there is no .css or .js files =The Default Folder for static is public=
 Root = Component("Home Page") #Root component: The component where your other components are rendered: The name inside is the name displayed on the tab
 
 class Home(Component):
@@ -69,7 +76,7 @@ Root.add(Home) #Add the Home component to the Root component
 
 @app.route("/") #Route decorator
 def index(request, response):
-    home_page = Root.render("<Home/>")
+    home_page = Root.render("<Home/>") #Note: always use components in Root.render never HTML
     response.text = home_page
 
 app.run() #runs the app

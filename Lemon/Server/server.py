@@ -1,27 +1,42 @@
 """
-Lemon: Server
+Lemon.Server: server
 By Sasen Perera 2022
 """
+import inspect
 from parse import parse
 from webob import Request, Response
 from waitress import serve
+from whitenoise import WhiteNoise
+from .middleware import Middleware
 
 class Server:
     """Server Methods"""
-    def __init__(self):
-        "Init Function"
+    def __init__(self, static_dir="public"):
         self.routes = {}
+        self.exception_handler = None
+        self.whitenoise = WhiteNoise(self.wsgi_app, root=static_dir)
+        self.middleware = Middleware(self)
 
-    def __call__(self, environ, start_response):
-        "On Function Calls"
+    def wsgi_app(self, environ, start_response):
+        """WSGI App"""
         request = Request(environ)
 
         response = self.handle_request(request)
 
         return response(environ, start_response)
 
+    def __call__(self, environ, start_response):
+        path_info = environ["PATH_INFO"]
+
+        if path_info.startswith("/static"):
+            environ["PATH_INFO"] = path_info[len("/static"):]
+            return self.whitenoise(environ, start_response)
+
+        return self.middleware(environ, start_response)
+
     def route(self, path):
         "route decorator: @server.route('/path')"
+        assert path not in self.routes, "Such route already exists."
         def wrapper(handler):
             self.routes[path] = handler
             return handler
@@ -43,17 +58,24 @@ class Server:
         return None, None
 
     def handle_request(self, request):
-        "Handle Request"
         response = Response()
 
         handler, kwargs = self.find_handler(request_path=request.path)
 
         if handler is not None:
+            if inspect.isclass(handler):
+                handler = getattr(handler(), request.method.lower(), None)
+                if handler is None:
+                    raise AttributeError("Method not allowed", request.method)
+
             handler(request, response, **kwargs)
         else:
             self.default_response(response)
 
         return response
+
+    def add_middleware(self, middleware_cls):
+        self.middleware.add(middleware_cls)
 
     def run(self, host="127.0.0.1", port=8000):
         "Runs app with waitress"

@@ -1,13 +1,12 @@
 from Lemon.components import Component
-from Lemon.server import Server
+from Lemon.Server.server import Server
 
-app = Server()
+app = Server(None)
 Root = Component("Home")
 
 class home(Component):
     
     name = "home"
-    components = {}
 
     def item(props: dict):
         return """

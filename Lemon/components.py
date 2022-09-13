@@ -11,37 +11,63 @@ class Component():
         self.name = name
         self.components = {}
 
-    def add(self, component):
-        """Add Component"""
-        self.components[component.name] = component
+    def add(self, components: list or object):
+        """Add Components in a list"""
+        if type(components) == list:
+            for index in range(0, len(components)):
+                if type(components[index]) == object:
+                    self.components[components[index].name] = components[index]
+                elif type(components[index]) == list:
+                    inner_list = components[index]
+                    for index2 in range(0, len(inner_list)):
+                        try:
+                            self.components[components[index][index2].name] = components[index][index2]
+                        except AttributeError:
+                            raise TypeError(f"Lemon.Component: add() must be a list of components -> {components[index][index2]}")
+                else:
+                    try:
+                        self.components[components[index].name] = components[index]
+                    except AttributeError:
+                        raise TypeError("Lemon.Component: add() must be a list of components")
+        else:
+            self.components[components.name] = components
 
-    def parse(self, prop: list):
+    def parse(self, Root, prop: list):
         """Render Function"""
         component = self.item(props=prop)
         if type(component) != str:
             raise TypeError("Lemon.Component: item() must return a string")
             
-        def parse_html(component):
+        def parse_html(component, root):
             component = component.split("\n")
             body_code = ""
-            for item in component:
-                component = item.replace("<", "").replace("/>", "")
-                component_name = component.split(" ", 1)[0]
-                if component_name in self.components.keys():
-                    component_props = component.split(" ", 1)[1] if len(component.split(" ")) > 1 else ""
-                    component_props = re.split(r"(?<=')\s+(?=\w)", component_props)
+            for line in component:
+                Stripline = line.removeprefix("\t").strip()
+                lines = Stripline.replace("<", "").replace("\t", "").replace("/>", "").replace(">", "")
+                component_name = lines.split(" ", 1)[0]
+                try:
+                    component_props = lines.split(" ", 1)[1] if len(lines.split(" ")) > 1 else ""
+                    if component_props != "":
+                        component_props = re.split(r'\s(?=\w+=)', component_props)
+                        props = {}
+                        for index in range(len(component_props)):
+                            prop = component_props[index].split("=")
+                            value = prop[1].replace("'", "") if prop[1][0] == "'" else prop[1].replace('"', '')
+                            props[prop[0]] = value
+                    else:
+                        props = {}
+                except IndexError:
                     props = {}
-                    for prop in component_props:
-                        prop = prop.split("=")
-                        value = prop[1].replace("'", "") if prop[1][0] == "'" else prop[1].replace('"', '')
-                        props[prop[0]] = value
-                    body_code += self.components[component_name].parse_html(self.components[component_name], props)
+                if component_name in list(Root.keys()):
+                    component_render = Root[component_name]
+                    body_code += component_render.parse(component_render, root, props)
                 else:
-                    body_code += item
+                    body_code += Stripline
 
-            return body_code
-        
-        body_code = parse_html(component)
+            output = body_code.replace("None", "", -1).replace("\n", "", -1)
+            return output
+
+        body_code = parse_html(component, Root)
         return f"""{body_code}"""
 
     def render(self, app: str):
@@ -56,7 +82,7 @@ class Component():
                 component_name = component.split(" ", 1)[0]
                 component_props = component.split(" ", 1)[1] if len(component.split(" ")) > 1 else ""
                 if component_props != "":
-                    component_props = re.split(r"(?<=')\s+(?=\w)", component_props)
+                    component_props = re.split(r"\s(?=\w+=)", component_props)
                     props = {}
                     for index in range(len(component_props)):
                         prop = component_props[index].split("=")
@@ -66,7 +92,7 @@ class Component():
                     props = {}
 
                 if component_name in self.components.keys():
-                    html += self.components[component_name].parse(self.components[component_name], props)
+                    html += self.components[component_name].parse(self.components[component_name], self.components, props)
                 else:
                     raise ValueError("Lemon.Component: component not found/registered")
             else:

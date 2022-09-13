@@ -1,13 +1,12 @@
 from Lemon.components import Component
-from Lemon.server import Server
+from Lemon.Server.server import Server
 
 Root = Component("Props")
-app = Server()
+app = Server(static_dir=None)
 
 class test(Component):
 
     name = "test"
-    components = {}
 
     def item(props: dict):
         return "<a href='/'><button>Click Me</button></a>"
