@@ -65,7 +65,6 @@ Root = Component("Home Page") #Root component: The component where your other co
 class Home(Component):
     "Home Page Component"
     name = "Home" # Name of the component : REQUIRED
-    components = {} # components dictionary : REQUIRED
     
     def item(props: dict): #item function where the renderer calls to get your html and other code
         return """
