@@ -1,3 +1,4 @@
 parse==1.19.0
 waitress==2.1.2
 WebOb==1.8.7
+whitenoise==6.2.0
