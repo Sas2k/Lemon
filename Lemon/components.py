@@ -77,7 +77,9 @@ class Component():
         app = app.split("\n") if "\n" in app else app.split("/>")
         bootstrap5_css_cdn = '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">'
         bootstrap5_js_cdn = '<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>'
-        html = f"<!DOCTYPE html><html><head><title>{self.name}</title>{bootstrap5_css_cdn}<link rel=\"stylesheet\" href={self.style}></head><body>"
+        style = open(self.style, "w+").read() if self.style != "" else ""
+        script = open(self.script, "w+").read().replace("\n", "") if self.script != "" else ""
+        html = f"<!DOCTYPE html><html><head><title>{self.name}</title>{bootstrap5_css_cdn}<style>{style}</style></head><body>"
         for component in app:
             if component != "":
                 component = component.replace("<", "").replace("\t", "")
@@ -100,7 +102,7 @@ class Component():
             else:
                 pass
             
-        html += f"{bootstrap5_js_cdn}<script src=\"{self.script}\"</body></html>"
+        html += f"{bootstrap5_js_cdn}<script src=\"{script}\"</body></html>"
         return html
 
     def item(self, props: dict):

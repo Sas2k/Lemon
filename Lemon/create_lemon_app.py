@@ -11,11 +11,11 @@ parser.add_argument('--version', action='version', version='V.1.0.0')
 
 app_code = """from Lemon.components import Component
 from Lemon.Server.server import Server
-from Lemon.ui.buttons import Button
+from Lemon.ui.buttons import Buttons
 from random import choice
 
 Root = Component(\"Lemon\", \"public/css/style.css\", \"public/js/script.js\")
-app = Server()
+app = Server(static_dir=\"public\")
 
 class App(Component):
     name = \"App\"
@@ -34,7 +34,7 @@ class App(Component):
 Root.add(
     [
     App,
-    Button().components
+    Buttons().components
     ]
 )
 
