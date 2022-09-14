@@ -33,7 +33,7 @@
 
 ## 🧐 About <a name = "about"></a>
 
-A framework that can generate html with python code and have capabilities of a Web Server. The library is shipped with Bootstrap 5 for your styling needs.
+A full-stack framework built with python. The library is shipped with Bootstrap 5 for your styling needs.
 
 Features:
 - UI Library (Development)
