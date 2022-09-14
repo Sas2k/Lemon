@@ -40,6 +40,7 @@ Features:
 - A full Back-end Capabilities except ORM( try using sqlite or something like that)
 - React like syntax
 - middleware api
+- a terminal app to create app [create-lemon-app <app-name>]
 
 ## 🗒 To-Do <a name = "To-Do"></a>
 

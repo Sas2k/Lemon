@@ -6,9 +6,11 @@ By Sasen Perera 2022
 import re
 
 class Component():
-    def __init__(self, name):
+    def __init__(self, name, stylesheet = None, script = None):
         """Init Function"""
         self.name = name
+        self.style = stylesheet if stylesheet != None else ""
+        self.script = script if script != None else ""
         self.components = {}
 
     def add(self, components: list or object):
@@ -43,7 +45,7 @@ class Component():
             body_code = ""
             for line in component:
                 Stripline = line.removeprefix("\t").strip()
-                lines = Stripline.replace("<", "").replace("\t", "").replace("/>", "").replace(">", "")
+                lines = Stripline.replace("<", "").replace("\t", "").replace("/>", "")
                 component_name = lines.split(" ", 1)[0]
                 try:
                     component_props = lines.split(" ", 1)[1] if len(lines.split(" ")) > 1 else ""
@@ -75,7 +77,7 @@ class Component():
         app = app.split("\n") if "\n" in app else app.split("/>")
         bootstrap5_css_cdn = '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">'
         bootstrap5_js_cdn = '<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>'
-        html = f"<!DOCTYPE html><html><head><title>{self.name}</title>{bootstrap5_css_cdn}</head><body>"
+        html = f"<!DOCTYPE html><html><head><title>{self.name}</title>{bootstrap5_css_cdn}<link rel=\"stylesheet\" href={self.style}></head><body>"
         for component in app:
             if component != "":
                 component = component.replace("<", "").replace("\t", "")
@@ -98,7 +100,7 @@ class Component():
             else:
                 pass
             
-        html += f"{bootstrap5_js_cdn}</body></html>"
+        html += f"{bootstrap5_js_cdn}<script src=\"{self.script}\"</body></html>"
         return html
 
     def item(self, props: dict):
