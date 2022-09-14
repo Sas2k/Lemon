@@ -16,7 +16,7 @@ class App(Component):
             <h1 id="BIG">🍋</h1>
             <h1>Hello! edit this in app.py</h1>
             <h2>Here is a random lemon:<strong>{choice(lemons)}</strong></h2>
-            <primary_button text="Click Me" onclick='pop_up("Hello Everybody!")'/>
+            <primary_button text="Click Me" onclick="pop_up('Hello Everybody!')"/>
         </div>
         '''
 

@@ -27,7 +27,7 @@ class App(Component):
             <h1 id="BIG">🍋</h1>
             <h1>Hello! edit this in app.py</h1>
             <h2>Here is a random lemon:<strong>{choice(lemons)}</strong></h2>
-            <primary_button text=\"Click Me\" onclick='pop_up(\'Hello Everybody!\')'/>
+            <primary_button text=\"Click Me\" onclick="pop_up('Hello Everybody!')"/>
         </div>
         '''
 
@@ -45,7 +45,7 @@ def home(request, response):
 app.run()
 """
 
-css_code = """* {
+css_code = """*, body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: yellow;
     text-align: center;
@@ -73,7 +73,7 @@ var pop_up = (string) => {
 }
 """
 
-readme_code = """# create-lemon-app: <name-of-app>
+readme_code = """# create-lemon-app: <-name-of-app->
 
 ## Run it. 🚀
 
