@@ -102,7 +102,7 @@ class Component():
             else:
                 pass
             
-        html += f"{bootstrap5_js_cdn}<script src=\"{script}\"</body></html>"
+        html += f"{bootstrap5_js_cdn}<script src=\"{script}\"></script></body></html>"
         return html
 
     def item(self, props: dict):
