@@ -9,8 +9,6 @@ parser = argparse.ArgumentParser(description='Create a Lemon app.')
 parser.add_argument('app_name', metavar='app_name', type=str)
 parser.add_argument('--version', action='version', version='V.1.0.0')
 
-args = parser.parse_args()
-
 app_code = """from Lemon.components import Component
 from Lemon.Server.server import Server
 from Lemon.ui.buttons import Button
@@ -84,8 +82,10 @@ run the app by doing this command.
 `python app.py`
 """
 
-def main(args):
+def main():
     """Main Function: Create-Lemon-App"""
+    args = parser.parse_args()
+
     app_name = args.app_name
     try:
         mkdir(app_name)
@@ -120,4 +120,4 @@ def main(args):
     print(f"App created @ /{args.app_name}/")
 
 if __name__ == "__main__":
-    main(args)
+    main()
