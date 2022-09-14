@@ -94,9 +94,7 @@ def main():
     chdir(app_name)
     
     #creates app file then write to it
-    app = open("app.py", "w+", encoding="utf-8")
-    app.write(app_code)
-    app.close()
+    open("app.py", "w+", encoding="utf-8").write(app_code)
 
     try:
         mkdir("public")
@@ -105,17 +103,11 @@ def main():
     except Exception:
         pass
 
-    style = open("public/css/style.css", "w+", encoding="utf-8")
-    style.write(css_code)
-    style.close()
+    open("public/css/style.css", "w+", encoding="utf-8").write(css_code)
 
-    script = open("public/js/script.js", "w+", encoding="utf-8")
-    script.write(js_code)
-    script.close()
+    open("public/js/script.js", "w+", encoding="utf-8").write(js_code)
 
-    readme = open("README.md", "w+", encoding="utf-8")
-    readme.write(readme_code)
-    readme.close()
+    open("README.md", "w+", encoding="utf-8").write(readme_code)
 
     print(f"App created @ /{args.app_name}/")
 
