@@ -27,6 +27,7 @@
 - [🧐 About <a name = "about"></a>](#-about-)
 - [🗒 To-Do <a name = "To-Do"></a>](#-to-do-)
 - [🏁 Getting Started <a name = "getting_started"></a>](#-getting-started-)
+  - [Folder Structure for apps](#folder-structure-for-apps)
   - [Installing](#installing)
 - [⛏️ Built Using <a name = "built_using"></a>](#️-built-using-)
 - [✍️ Authors <a name = "authors"></a>](#️-authors-)
@@ -40,7 +41,8 @@ Features:
 - A full Back-end Capabilities except ORM( try using sqlite or something like that)
 - React like syntax
 - middleware api
-- a terminal app to create app [create-lemon-app <app-name>]
+- a terminal app to create app [create-lemon-app < app-name >]
+- Reactivity (See `examples/reactivity-example`)
 
 ## 🗒 To-Do <a name = "To-Do"></a>
 
@@ -80,6 +82,25 @@ def index(request, response):
     response.text = home_page
 
 app.run() #runs the app
+```
+
+### Folder Structure for apps
+
+Here is the folder structure I recommend.
+(you can create your own structure based on your needs)
+```
+App/
+    - src/
+        - Components/
+            - __init__.py
+            - components.py
+        - Public/
+            - css/
+                - style.css
+            - js/
+                - script.js
+        - app.py
+    - README.md
 ```
 
 ### Installing

@@ -8,7 +8,7 @@ class FormControl():
     class Input(Component):
         name = "Input"
         def item(props: dict):
-            args = ["type", "id", "placeholder", "value", "text", "rows", "cols", "disabled", "readonly"]
+            args = ["type", "id", "placeholder", "value", "text", "rows", "cols", "disabled", "readonly", "required", "oninput"]
             for arg in args:
                 if arg not in list(props.keys()):
                     if arg == "type":
@@ -26,7 +26,7 @@ class FormControl():
             
             return f"""
             <label for=\"{props["id"]}\" class=\"form-label\">{props["text"]}</label>
-            <input type=\"{props['type']}\" class=\"form-control\" id=\"{props['id']}\"{' rows='+props['rows']+' ' if props['type'] == 'textarea' else ''}{' cols='+props['cols']+' ' if props['type'] == 'textarea' else ' '} placeholder=\"{props['placeholder']}\" {props['disabled']} {props["readonly"]}/>
+            <input type=\"{props['type']}\" class=\"form-control\" id=\"{props['id']}\"{' rows='+props['rows']+' ' if props['type'] == 'textarea' else ''}{' cols='+props['cols']+' ' if props['type'] == 'textarea' else ' '}{'oninput="'+props['oninput']+'" ' if props['oninput'] != '' else ''} placeholder=\"{props['placeholder']}\" {props['disabled']} {props["readonly"]} {props["required"]}/>
             """
     
     class Select(Component):

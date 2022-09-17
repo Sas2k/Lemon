@@ -6,12 +6,24 @@ By Sasen Perera 2022
 import re
 
 class Component():
+    __initialized = False
+
     def __init__(self, name, stylesheet = None, script = None):
         """Init Function"""
-        self.name = name
-        self.style = stylesheet if stylesheet != None else ""
-        self.script = script if script != None else ""
-        self.components = {}
+        try:
+            self.name = name
+            self.style = '<link rel="stylesheet" href="' + stylesheet + '">' if stylesheet != None else ""
+            self.script = '<script src="' + script + '"></script>' if script != None else ""
+            self.components = {}
+        finally:
+            self.__initialized = True
+
+    def __setattr__(self, name, value):
+        """Set Attribute"""
+        if self.__initialized:
+            raise AttributeError("Lemon.Component: cannot set attribute")
+        else:
+            super().__setattr__(name, value)
 
     def add(self, components: list or object):
         """Add Components in a list"""
@@ -77,7 +89,51 @@ class Component():
         app = app.split("\n") if "\n" in app else app.split("/>")
         bootstrap5_css_cdn = '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">'
         bootstrap5_js_cdn = '<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>'
-        html = f"<!DOCTYPE html><html><head><title>{self.name}</title>{bootstrap5_css_cdn}<link rel=\"stylesheet\" href=\"{self.style}\"></head><body>"
+        html = f"<!DOCTYPE html><html><head><title>{self.name}</title>{bootstrap5_css_cdn}{self.style}</head><body>"
+        reactive_code = """let data = {
+    message: ""
+}
+let target = null
+class Dep {
+  constructor() {
+    this.subscribers = []
+  }
+  depend() {
+    if (target && !this.subscribers.includes(target)) {
+      this.subscribers.push(target);
+    }
+  }
+  notify() {
+    this.subscribers.forEach(sub => sub());
+  }
+}
+
+Object.keys(data).forEach(key => {
+  let internalValue = data[key]
+
+  const dep = new Dep()
+
+  Object.defineProperty(data, key, {
+    get() {
+      dep.depend()
+      return internalValue
+    },
+    set(newVal) {
+      internalValue = newVal
+      dep.notify()
+    }
+  })
+})
+
+let renderFunction = () => {
+  document.getElementById("message").innerHTML = data.message;
+}
+
+let watcher = function(func) {
+  target = func
+  target()
+  target = null
+}"""
         for component in app:
             if component != "":
                 component = component.replace("<", "").replace("\t", "")
@@ -99,8 +155,7 @@ class Component():
                     raise ValueError("Lemon.Component: component not found/registered")
             else:
                 pass
-            
-        html += f"{bootstrap5_js_cdn}<script src=\"{self.script}\"></script></body></html>"
+        html += f'{bootstrap5_js_cdn}<script>{reactive_code}</script>{self.script}</body></html>'
         return html
 
     def item(self, props: dict):
