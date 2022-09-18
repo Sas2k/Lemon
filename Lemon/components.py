@@ -89,7 +89,7 @@ class Component():
         app = app.split("\n") if "\n" in app else app.split("/>")
         bootstrap5_css_cdn = '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">'
         bootstrap5_js_cdn = '<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>'
-        html = f"<!DOCTYPE html><html><head><title>{self.name}</title>{bootstrap5_css_cdn}{self.style}</head><body>"
+        html = f"<!DOCTYPE html><html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><title>{self.name}</title>{bootstrap5_css_cdn}{self.style}</head><body>"
         reactive_code = """let data = {
     message: ""
 }

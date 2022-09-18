@@ -44,6 +44,8 @@ Features:
 - a terminal app to create app [create-lemon-app < app-name >]
 - Reactivity (See `examples/reactivity-example`)
 
+> If you want to have live reloading try Py-Mon (https://github.com/kevinjosethomas/py-mon)
+
 ## 🗒 To-Do <a name = "To-Do"></a>
 
 - [ ] Form Data Handling
