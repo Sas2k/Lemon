@@ -36,6 +36,8 @@
 
 A full-stack framework built with python. The library is shipped with Bootstrap 5 for your styling needs.
 
+Discord Server: https://discord.gg/wg239Cpf
+
 Features:
 - UI Library (Development)
 - A full Back-end Capabilities except ORM( try using sqlite or something like that)
