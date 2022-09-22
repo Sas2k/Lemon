@@ -67,7 +67,7 @@ from Lemon import Component
 from Lemon.server import Server
 
 app = Server(static_dir=None) #set the static_dir to none if there is no .css or .js files =The Default Folder for static is public=
-Root = Component("Home Page") #Root component: The component where your other components are rendered: The name inside is the name displayed on the tab
+Root = Component("Home Page", None, None) #Root component: The component where your other components are rendered: The name inside is the name displayed on the tab, the 2 nones are for css and js file locations
 
 class Home(Component):
     "Home Page Component"
