@@ -48,6 +48,8 @@ Features:
 
 > If you want to have live reloading try Py-Mon (https://github.com/kevinjosethomas/py-mon)
 
+> If you don't think this isn't capable of doing anything check this out -> https://portfolio-sas2k.vercel.app/ | https://github.com/Sas2k/portfolio
+
 ## 🗒 To-Do <a name = "To-Do"></a>
 
 - [ ] Form Data Handling
@@ -63,11 +65,11 @@ Docs Are still in Development Try heading over to `/examples` for some idea.
 Here is an example below
 
 ```python
-from Lemon.components import Component
+from Lemon import Component
 from Lemon.server import Server
 
 app = Server(static_dir=None) #set the static_dir to none if there is no .css or .js files =The Default Folder for static is public=
-Root = Component("Home Page") #Root component: The component where your other components are rendered: The name inside is the name displayed on the tab
+Root = Component("Home Page", None, None) #Root component: The component where your other components are rendered: The name inside is the name displayed on the tab, the 2 nones are for css and js file locations
 
 class Home(Component):
     "Home Page Component"
@@ -78,7 +80,7 @@ class Home(Component):
             <h1>Hello World!</h1>
         """
 
-Root.add(Home) #Add the Home component to the Root component
+Root.add([Home]) #Add the Home component to the Root component
 
 @app.route("/") #Route decorator
 def index(request, response):
