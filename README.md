@@ -63,7 +63,7 @@ Docs Are still in Development Try heading over to `/examples` for some idea.
 Here is an example below
 
 ```python
-from Lemon.components import Component
+from Lemon import Component
 from Lemon.server import Server
 
 app = Server(static_dir=None) #set the static_dir to none if there is no .css or .js files =The Default Folder for static is public=
@@ -78,7 +78,7 @@ class Home(Component):
             <h1>Hello World!</h1>
         """
 
-Root.add(Home) #Add the Home component to the Root component
+Root.add([Home]) #Add the Home component to the Root component
 
 @app.route("/") #Route decorator
 def index(request, response):
