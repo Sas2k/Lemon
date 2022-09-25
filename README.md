@@ -1,10 +1,7 @@
 <p align="center">
   <a href="" rel="noopener">
- <img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/322/lemon_1f34b.png" alt="Lemon Logo"></a>
+ <img src="https://raw.githubusercontent.com/Sas2k/Lemon/main/Lemon-Banner.png" alt="Lemon Logo"></a>
 </p>
-
-<h1 align="center">Lemon &#127819;</h3>
-
 <div align="center">
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
