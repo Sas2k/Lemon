@@ -40,7 +40,8 @@ Discord Server: https://discord.gg/wg239Cpf
 
 Features:
 - UI Library (Development)
-- A full Back-end Capabilities except ORM( try using sqlite or something like that)
+- A full Back-end Capabilities
+- An ORM and migrations feature (check-out -> examples/Lemon-App)
 - React like syntax
 - middleware api
 - a terminal app to create app [create-lemon-app < app-name >]
@@ -52,9 +53,14 @@ Features:
 
 ## 🗒 To-Do <a name = "To-Do"></a>
 
+> Legend: <br>
+> [x] - checked
+> [\*] - doing
+> [ ] - Not Done
+
 - [ ] Form Data Handling
 - [ ] complex front-end stuff
-- [ ] Models (Databases)
+- [x] Models (Databases)
 - [x] API
 - [ ] Docs
 - [ ] Get to V1.0.0
@@ -100,12 +106,16 @@ App/
         - Components/
             - __init__.py
             - components.py
+        - Models/
+            - __init__.py
+            - models.py
         - Public/
             - css/
                 - style.css
             - js/
                 - script.js
         - app.py
+        - base.py
     - README.md
 ```
 

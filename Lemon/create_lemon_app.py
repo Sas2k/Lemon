@@ -80,6 +80,34 @@ readme_code = """# create-lemon-app: <-name-of-app->
 run the app by doing this command.
 
 `python app.py`
+
+## Migrate SQL
+
+With this
+
+`python base.py`
+"""
+
+sql_base = """from Lemon.orm import DBManager, migrations
+
+baseModel = DBManager.baseModel
+ClassBase = DBManager.base
+migrate = migrations.MigrateCommand
+
+class model(baseModel):
+    base_model = ClassBase
+    table_name = "model"
+    fields = ("field1", "field2")
+
+model_list = [model]
+
+migrate(model_list).migrate()"""
+
+sql_model = """from Lemon.orm import DBManager
+
+sql = DBManager.SQLConnectionManager("../model.db")
+# inserts some fake data to field1 and field2
+sql.insert("model", [("field1", "field2"), ("Hello", "World")])
 """
 
 def main():
@@ -95,17 +123,21 @@ def main():
     
     #creates app file then write to it
     open("app.py", "w+", encoding="utf-8").write(app_code)
+    open("base.py", "w+", encoding="utf-8").write(sql_base)
 
     try:
         mkdir("public")
         mkdir("public/css")
         mkdir("public/js")
+        mkdir("models")
     except Exception:
         pass
 
     open("public/css/style.css", "w+", encoding="utf-8").write(css_code)
 
     open("public/js/script.js", "w+", encoding="utf-8").write(js_code)
+
+    open("models/model.py", "w+", encoding="utf-8").write(sql_model)
 
     open("README.md", "w+", encoding="utf-8").write(readme_code)
 
