@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=240px height=240px src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/322/lemon_1f34b.png" alt="Lemon Logo"></a>
+ <img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/322/lemon_1f34b.png" alt="Lemon Logo"></a>
 </p>
 
 <h1 align="center">Lemon &#127819;</h3>
