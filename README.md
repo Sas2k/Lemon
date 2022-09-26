@@ -37,7 +37,7 @@ Discord Server: https://discord.gg/wg239Cpf
 
 Features:
 - UI Library (Development)
-- A full Back-end Capabilities
+- A full Back-end Capabilities [routing, post and get, class based route-handling, cookies and etc...]
 - An ORM and migrations feature (check-out -> examples/Lemon-App)
 - React like syntax
 - middleware api

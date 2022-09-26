@@ -74,6 +74,18 @@ class Server:
 
         return response
 
+    def add_cookie(self, response, key, value, max_age=None, expires=None, path="/", domain=None, secure=False, httponly=False, samesite=None):
+        "Add Cookie"
+        response.set_cookie(key, value, max_age=max_age, expires=expires, path=path, domain=domain, secure=secure, httponly=httponly, samesite=samesite)
+
+    def delete_cookie(self, response, key, path="/", domain=None):
+        "Delete Cookie"
+        response.delete_cookie(key, path=path, domain=domain)
+    
+    def get_cookie(self, request, key):
+        "Get Cookie"
+        return request.cookies.get(key)
+
     def add_middleware(self, middleware_cls):
         self.middleware.add(middleware_cls)
 
