@@ -33,6 +33,8 @@
 
 A full-stack framework built with python. The library is shipped with Bootstrap 5 for your styling needs.
 
+Docs: https://sas2k.github.io/Lemon
+
 Discord Server: https://discord.gg/wg239Cpf
 
 Features:
@@ -56,11 +58,11 @@ Features:
 > [ ] - Not Done
 
 - [ ] Form Data Handling
-- [ ] complex front-end stuff
+- [x] complex front-end stuff
 - [x] Models (Databases)
 - [x] API
-- [ ] Docs
-- [ ] Get to V1.0.0
+- [x] Docs
+- [x] Get to V1.0.0 (woop woop 🎉)
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
