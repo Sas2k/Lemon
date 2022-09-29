@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://sas2k.github.io/Lemon/blog</id>
+    <title>Lemon 🍋 - docs Blog</title>
+    <updated>2022-09-29T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://sas2k.github.io/Lemon/blog"/>
+    <subtitle>Lemon 🍋 - docs Blog</subtitle>
+    <icon>https://sas2k.github.io/Lemon/img/favicon.png</icon>
+    <entry>
+        <title type="html"><![CDATA[first post!]]></title>
+        <id>/2022/09/29/First-Post</id>
+        <link href="https://sas2k.github.io/Lemon/blog/2022/09/29/First-Post"/>
+        <updated>2022-09-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[This is the very first post on the blog.]]></summary>
+        <content type="html"><![CDATA[<p>This is the very first post on the blog.</p><p>This blog will give updates on Lemon and it's Development</p><p>Github: <a href="https://github.com/Sas2k/Lemon" target="_blank" rel="noopener noreferrer">https://github.com/Sas2k/Lemon</a></p><p>Until the next one,
+Good day people!</p>]]></content>
+        <author>
+            <name>Sasen Perera</name>
+            <uri>https://github.com/sas2k</uri>
+        </author>
+    </entry>
+</feed>
