@@ -26,6 +26,7 @@ class Server:
         return response(environ, start_response)
 
     def __call__(self, environ, start_response):
+        """The code to run when the class is called as a function"""
         path_info = environ["PATH_INFO"]
 
         if path_info.startswith("/public"):
@@ -58,6 +59,7 @@ class Server:
         return None, None
 
     def handle_request(self, request):
+        """Handle Requests"""
         response = Response()
 
         handler, kwargs = self.find_handler(request_path=request.path)
@@ -87,15 +89,18 @@ class Server:
         return request.cookies.get(key)
 
     def add_middleware(self, middleware_cls):
+        """Add Middleware"""
         self.middleware.add(middleware_cls)
 
     def run(self, host="127.0.0.1", port=8000):
-        "Runs app with waitress"
+        "Runs app with waitress and reloads on file change"
         host = host.lower()
         print(f"Running on http://localhost:{port} | http://127.0.0.1:{port}" if host == "127.0.0.1" or host == "localhost" else f"Running on http://{host}:{port}")
         print("To stop server press Ctrl+C")
         try:
-            serve(self, host=host, port=port)
+            try:
+                serve(self, host=host, port=port)
+            except Exception as e:
+                print(f"lemon.server: {e}")
         except Exception as e:
             print(f"Lemon.Server: {e}")
-        print(f"Server Ended")
