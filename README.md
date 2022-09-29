@@ -46,7 +46,7 @@ Features:
 
 > If you want to have live reloading try uvicorn: https://www.uvicorn.org/
 
-> If you don't think this isn't capable of doing anything check this out -> https://portfolio-sas2k.vercel.app/ | https://github.com/Sas2k/portfolio
+> If you don't think this isn't capable to handle anything check this out! -> https://portfolio-sas2k.vercel.app/ | https://github.com/Sas2k/portfolio
 
 ## 🗒 To-Do <a name = "To-Do"></a>
 
