@@ -67,7 +67,13 @@ const config = {
           },
           {
             type: 'doc',
-            docId: 'intro',
+            docId: 'lemon-in-3min',
+            position: 'left',
+            label: 'Quick-Start',
+          },
+          {
+            type: 'doc',
+            docId: 'tutorial/intro-to-tutorial',
             position: 'left',
             label: 'Tutorial',
           },
@@ -87,7 +93,7 @@ const config = {
             items: [
               {
                 label: 'Tutorial',
-                to: '/docs/intro',
+                to: '/docs/lemon-in-3min',
               },
             ],
           },

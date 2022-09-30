@@ -4,7 +4,7 @@ let changetext = () => {
 }
 
 function updateText() {
-  document.getElementById("text-output").innerText = data.message;
+    document.getElementById("text-output").innerText = data.message;
 }
 
 watcher(updateText)

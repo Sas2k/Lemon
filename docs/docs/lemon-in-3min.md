@@ -1,8 +1,9 @@
 ---
+title: Lemon In 3 minutes
 sidebar_position: 2
 ---
 
-# Lemon Intro
+# Lemon in 3 minutes
 
 Let's try to create a site in **Lemon 🍋**..
 
@@ -36,3 +37,5 @@ then visit localhost:5000
 The `cd` command changes the current directory to the website dir,
 
 next the `python app.py` runs the app.
+
+Now that you done this, head over to the [tutorial](tutorial/intro-to-tutorial), to create a basic app.
