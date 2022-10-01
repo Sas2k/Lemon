@@ -4,10 +4,19 @@
         <title>Lemon 🍋 - docs Blog</title>
         <link>https://sas2k.github.io/Lemon/blog</link>
         <description>Lemon 🍋 - docs Blog</description>
-        <lastBuildDate>Thu, 29 Sep 2022 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 01 Oct 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Version 1.0.0 Release 🎉]]></title>
+            <link>https://sas2k.github.io/Lemon/blog/2022/10/01/Version-1-0-0-Update</link>
+            <guid>/2022/10/01/Version-1-0-0-Update</guid>
+            <pubDate>Sat, 01 Oct 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[version 1.0.0 is released!]]></description>
+            <content:encoded><![CDATA[<p>version 1.0.0 is released!
+and with it lemon is no longer Beta! 🎉 </p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="changes">Changes<a class="hash-link" href="#changes" title="Direct link to heading">​</a></h2><ul><li>Added Docs</li><li>Added Doc-String and Polished code</li><li>Added an example for middleware <code>examples/middleware-example.py</code></li></ul><p><strong>Full Changelog</strong>: <a href="https://github.com/Sas2k/Lemon/compare/V.Beta-3.7.0...V.1.0.0" target="_blank" rel="noopener noreferrer">https://github.com/Sas2k/Lemon/compare/V.Beta-3.7.0...V.1.0.0</a></p><p><em><strong>We've come a long way people. Until next time, Good Day people!</strong></em></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[first post!]]></title>
             <link>https://sas2k.github.io/Lemon/blog/2022/09/29/First-Post</link>

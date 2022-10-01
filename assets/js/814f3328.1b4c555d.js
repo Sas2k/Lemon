@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunklemon_docs=self.webpackChunklemon_docs||[]).push([[535],{5641:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Version 1.0.0 Release \ud83c\udf89","permalink":"/Lemon/blog/2022/10/01/Version-1-0-0-Update"},{"title":"first post!","permalink":"/Lemon/blog/2022/09/29/First-Post"}]}')}}]);
