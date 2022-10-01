@@ -10,6 +10,6 @@ So you guys can get the hang of it and learn it.
 
 ## First of what are we building?
 
-We're going to build a blog that can be updated through http request, and the posts will be stored in a DB.
+We're going to build a blog that can be updated through http request.
 
 So, now that we know what we're building let's get to it!.

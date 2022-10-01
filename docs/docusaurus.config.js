@@ -10,6 +10,7 @@ const config = {
   tagline: 'A Full-Stack Framework for Python',
   url: 'https://sas2k.github.io/',
   baseUrl: '/Lemon/',
+  trailingSlash: false,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.png',

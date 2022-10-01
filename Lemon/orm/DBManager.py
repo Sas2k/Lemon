@@ -43,11 +43,8 @@ class SQLConnectionManager:
     @commit
     def insert(self, tablename, fields: list):
         """Insert"""
-        print(fields)
         values = fields[1]
         fields = fields[0]
-        print(fields)
-        print(values)
         fields = ", ".join(fields)
         values = ", ".join(values)
         insert_command = f"INSERT INTO {tablename} ({fields}) VALUES ({values})"

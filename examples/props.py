@@ -26,8 +26,7 @@ class Props(Component):
             <p>{props['p']}</h3>
         """
 
-Root.add(test)
-Root.add(Props)
+Root.add([test, Props])
 
 @app.route("/")
 def title(request, response):

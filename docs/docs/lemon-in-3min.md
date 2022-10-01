@@ -20,7 +20,7 @@ pip install Lemon-Library
 to generate a new site run this command
 
 ```
-create-next-app my-website
+create-lemon-app my-website
 ```
 
 ## Start your site
