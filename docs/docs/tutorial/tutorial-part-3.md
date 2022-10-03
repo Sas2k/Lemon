@@ -31,8 +31,8 @@ class api_post():
     def get(self, req, res):
         res.text = "method not allowed"
     def post(self, req, res):
-        print(req.body)
+        print(req.json)
 ```
 
 here the body of the request is printed.
-now the basic api is implemented let's move to part 4 (implemented soon...)
+now the basic api is implemented let's move to part 4.

@@ -40,10 +40,11 @@ Discord Server: https://discord.gg/wg239Cpf
 Features:
 - UI Library (Development)
 - A full Back-end Capabilities [routing, post and get, class based route-handling, cookies and etc...]
-- An ORM and migrations feature (check-out -> examples/Lemon-App)
+- An ORM and migrations feature (check-out -> examples/Lemon-App) (ORM supports strings only for now.)
 - React like syntax
 - middleware api
 - a terminal app to create app [create-lemon-app < app-name >]
+- Component Generator [https://github.com/Sas2k/Lemon-CLI]
 - Reactivity (See `examples/reactivity-example`)
 
 > If you want to have live reloading try uvicorn: https://www.uvicorn.org/
