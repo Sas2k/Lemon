@@ -6,7 +6,7 @@ migrate = migrations.MigrateCommand
 
 class model(baseModel):
     base_model = ClassBase
-    table_name = "model"
+    tablename = "model"
     fields = ("field1", "field2")
 
 model_list = [model]

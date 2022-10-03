@@ -1,5 +1,6 @@
-from Lemon.orm import DBManager
+from Lemon.orm.DBManager import SqliteManager
 
-sql = DBManager.SQLConnectionManager("../model.db")
+sql = SqliteManager("../model.db")
 # inserts some fake data to field1 and field2
-sql.insert("model", [("field1", "field2"), ("Hello", "World")])
+def insert_fake_date():
+    sql.insert("model", [("field1", "field2"), ("Hello", "World")])

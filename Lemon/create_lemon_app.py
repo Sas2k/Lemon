@@ -14,6 +14,8 @@ from Lemon.Server.server import Server
 from Lemon.ui.buttons import Buttons
 from random import choice
 
+from models.model import insert_fake_data
+
 Root = Component(\"Lemon\", \"public/css/style.css\", \"public/js/script.js\")
 app = Server(static_dir=\"public\")
 
@@ -40,6 +42,7 @@ Root.add(
 
 @app.route("/")
 def home(request, response):
+    insert_fake_data()
     response.text = Root.render('<App/>')
 
 app.run()
@@ -96,18 +99,19 @@ migrate = migrations.MigrateCommand
 
 class model(baseModel):
     base_model = ClassBase
-    table_name = "model"
+    tablename = "model"
     fields = ("field1", "field2")
 
 model_list = [model]
 
 migrate(model_list).migrate()"""
 
-sql_model = """from Lemon.orm import DBManager
+sql_model = """from Lemon.orm.DBManager import SqliteManager
 
-sql = DBManager.SQLConnectionManager("../model.db")
+sql = SqliteManager("../model.db")
 # inserts some fake data to field1 and field2
-sql.insert("model", [("field1", "field2"), ("Hello", "World")])
+def insert_fake_date():
+    sql.insert("model", [("field1", "field2"), ("Hello", "World")])
 """
 
 def main():
@@ -138,6 +142,8 @@ def main():
     open("public/js/script.js", "w+", encoding="utf-8").write(js_code)
 
     open("models/model.py", "w+", encoding="utf-8").write(sql_model)
+
+    open("models/__init__.py", "w+", encoding="utf-8").write("")
 
     open("README.md", "w+", encoding="utf-8").write(readme_code)
 
