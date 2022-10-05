@@ -35,8 +35,8 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl:
-            'https://github.com/Sas2k/Lemon/tree/main/docs/Lemon-Docs',
+          editUrl: ({versionDocsDirPath, docPath}) =>
+            `https://github.com/Sas2k/Lemon/edit/main/website/${versionDocsDirPath}/${docPath}`
         },
         blog: {
           showReadingTime: true,
@@ -83,6 +83,9 @@ const config = {
             href: 'https://github.com/Sas2k/Lemon',
             label: 'GitHub',
             position: 'right',
+          },
+          {
+            type: 'docsVersionDropdown'
           },
         ],
       },
