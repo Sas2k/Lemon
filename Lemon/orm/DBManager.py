@@ -56,6 +56,14 @@ class SqliteManager():
     def __enter__(self):
         return self
 
+    def commit(operation):
+        def wrapper(self, tablename, fields):
+            operation(self, tablename, fields)
+            self.connection.commit()
+            print(f"{datetime.datetime.now()}: Commit is successful!!")
+        return wrapper
+
+    @commit
     def create_table(self, tablename, columns):
         columns = list(columns)
         columns = " text, ".join(columns) +" text"
@@ -69,6 +77,7 @@ class SqliteManager():
         finally:
             print(f"{tablename}: created successfully!")
 
+    @commit
     def insert(self, tablename, columns, values):
         column = ", ".join(columns) if len(columns) > 1 else columns
         value = ", ".join(values) if len(values) > 1 else values
@@ -78,6 +87,7 @@ class SqliteManager():
         except sql3.Error as er:
             print(f"SQLite error: {' '.join(er.args)}")
 
+    @commit
     def select(self, tablename, columns):
         columns = ", ".join(columns) if len(columns) > 1 else columns
         command = f"SELECT {columns} FROM {tablename}"
@@ -88,6 +98,7 @@ class SqliteManager():
         finally:
             return self.cursor.fetchall()
 
+    @commit
     def delete(self, tablename, conditions, logic="AND"):
         conditions =f" {logic} ".join(conditions) if len(conditions) > 1 else conditions
         command = f"DELETE FROM {tablename} WHERE {conditions}"
@@ -98,6 +109,7 @@ class SqliteManager():
         finally:
             print(f"{tablename}: deleted successfully!")
 
+    @commit
     def update(self, tablename, columns, values):
         columns = list(columns)
         values = list(values)
