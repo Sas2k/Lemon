@@ -4,7 +4,7 @@ import datetime
 class SQLConnectionManager():
     def __init__(self,filename):
         self.filename = filename
-        self.connection = sql3.connect(self.filename)
+        self.connection = sql3.connect(self.filename, check_same_thread=False)
         self.cursor = self.connection.cursor()
 
     def __enter__(self):
