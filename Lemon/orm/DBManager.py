@@ -14,10 +14,10 @@ class SQLConnectionManager():
         return self
 
     def commit(operation):
-        def wrapper(self, tablename, fields):
-            operation(self, tablename, fields)
+        def wrapper(self, *args, **kwargs):
+            operation(self, *args, **kwargs)
             self.connection.commit()
-            print(f"{datetime.datetime.now()}: Commit is successful!!")
+            print("Lemon.orm: Commit Successful")
         return wrapper
 
     @commit
@@ -50,17 +50,17 @@ class SQLConnectionManager():
 class SqliteManager():
     def __init__(self, filename):
         self.filename = filename
-        self.connection = sql3.connect(self.filename)
-        self.cursor = sql3.connect(filename).cursor()
+        self.connection = sql3.connect(self.filename, check_same_thread=False)
+        self.cursor = self.connection.cursor()
 
     def __enter__(self):
         return self
 
     def commit(operation):
-        def wrapper(self, tablename, fields):
-            operation(self, tablename, fields)
+        def wrapper(self, *args, **kwargs):
+            operation(self, *args, **kwargs)
             self.connection.commit()
-            print(f"{datetime.datetime.now()}: Commit is successful!!")
+            print("Lemon.orm: Commit Successful")
         return wrapper
 
     @commit
@@ -68,7 +68,7 @@ class SqliteManager():
         columns = list(columns)
         columns = " text, ".join(columns) +" text"
         drop_command = f"DROP TABLE IF EXISTS {tablename}"
-        create_command = f"CREATE TABLE {tablename} ({columns})"
+        create_command = f"CREATE TABLE {tablename} ({columns});"
         try:
             self.cursor.execute(drop_command)
             self.cursor.execute(create_command)
@@ -81,7 +81,7 @@ class SqliteManager():
     def insert(self, tablename, columns, values):
         column = ", ".join(columns) if len(columns) > 1 else columns
         value = ", ".join(values) if len(values) > 1 else values
-        command = f"INSERT INTO {tablename} ({column}) VALUES ({value})"
+        command = f"INSERT INTO {tablename} ({column}) VALUES ({value});"
         try:
             self.cursor.execute(command)
         except sql3.Error as er:
@@ -90,7 +90,7 @@ class SqliteManager():
     @commit
     def select(self, tablename, columns):
         columns = ", ".join(columns) if len(columns) > 1 else columns
-        command = f"SELECT {columns} FROM {tablename}"
+        command = f"SELECT {columns} FROM {tablename};"
         try:
             self.cursor.execute(command)
         except sql3.Error as er:
@@ -101,7 +101,7 @@ class SqliteManager():
     @commit
     def delete(self, tablename, conditions, logic="AND"):
         conditions =f" {logic} ".join(conditions) if len(conditions) > 1 else conditions
-        command = f"DELETE FROM {tablename} WHERE {conditions}"
+        command = f"DELETE FROM {tablename} WHERE {conditions};"
         try:
             self.cursor.execute(command)
         except sql3.Error as er:
@@ -118,7 +118,7 @@ class SqliteManager():
         else:
             columns = ", ".join(columns)
             values = ", ".join(values)
-            command = f"UPDATE {tablename} SET {columns} = {values}"
+            command = f"UPDATE {tablename} SET {columns} = {values};"
             try:
                 self.cursor.execute(command)
             except sql3.Error as er:
