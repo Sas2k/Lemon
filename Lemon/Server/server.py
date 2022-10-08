@@ -3,11 +3,15 @@ Lemon.Server: server
 By Sasen Perera 2022
 """
 import inspect
+import webbrowser
+
 from parse import parse
 from webob import Request, Response
 from waitress import serve
 from whitenoise import WhiteNoise
 from .middleware import Middleware
+from requests import Session as RequestsSession
+from wsgiadapter import WSGIAdapter as RequestsWSGIAdapter
 
 class Server:
     """Server Methods"""
@@ -16,6 +20,7 @@ class Server:
         self.exception_handler = None
         self.whitenoise = WhiteNoise(self.wsgi_app, root=static_dir)
         self.middleware = Middleware(self)
+        self.exception_handler = None
 
     def wsgi_app(self, environ, start_response):
         """WSGI App"""
@@ -35,6 +40,16 @@ class Server:
 
         return self.middleware(environ, start_response)
 
+    def add_route(self, path, handler):
+        "Django style Route Adding."
+        assert path not in self.routes, "Such route already exists."
+
+        self.routes[path] = handler
+
+    def add_exception_handler(self, exception_handler):
+        "Add Exception Handler"
+        self.exception_handler = exception_handler
+    
     def route(self, path):
         "route decorator: @server.route('/path')"
         assert path not in self.routes, "Such route already exists."
@@ -64,15 +79,21 @@ class Server:
 
         handler, kwargs = self.find_handler(request_path=request.path)
 
-        if handler is not None:
-            if inspect.isclass(handler):
-                handler = getattr(handler(), request.method.lower(), None)
-                if handler is None:
-                    raise AttributeError("Method not allowed", request.method)
+        try:
+            if handler is not None:
+                if inspect.isclass(handler):
+                    handler = getattr(handler(), request.method.lower(), None)
+                    if handler is None:
+                        raise AttributeError("Method now allowed", request.method)
 
-            handler(request, response, **kwargs)
-        else:
-            self.default_response(response)
+                handler(request, response, **kwargs)
+            else:
+                self.default_response(response)
+        except Exception as e:
+            if self.exception_handler is None:
+                raise e
+            else:
+                self.exception_handler(request, response, e)
 
         return response
 
@@ -92,12 +113,19 @@ class Server:
         """Add Middleware"""
         self.middleware.add(middleware_cls)
 
+    def test_session(self, base_url="http://testserver"):
+        "Testing Session"
+        session = RequestsSession()
+        session.mount(prefix=base_url, adapter=RequestsWSGIAdapter(self))
+        return session
+
     def run(self, host="127.0.0.1", port=8000):
-        "Runs app with waitress and reloads on file change"
+        "Runs app with waitress"
         host = host.lower()
         print(f"Running on http://localhost:{port} | http://127.0.0.1:{port}" if host == "127.0.0.1" or host == "localhost" else f"Running on http://{host}:{port}")
         print("To stop server press Ctrl+C")
         try:
+            webbrowser.open(f"http://localhost:{port}" if host == "localhost" or "127.0.0.1" else f"http://{host}:{port}")
             try:
                 serve(self, host=host, port=port)
             except Exception as e:

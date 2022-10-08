@@ -1,4 +1,4 @@
-# create-lemon-app: <-name-of-app->
+# create-lemon-app: Lemon-App
 
 ## Run it. 🚀
 

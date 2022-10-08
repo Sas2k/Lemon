@@ -34,7 +34,7 @@ class SQLConnectionManager():
         finally:
             print(f"{tablename}: created successfully!")
 
-    def alter_table(self, ):
+    def alter_table(self):
         pass
 
     @property

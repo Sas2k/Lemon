@@ -39,13 +39,18 @@ Discord Server: https://discord.gg/wg239Cpf
 
 Features:
 - UI Library (Development)
-- A full Back-end Capabilities [routing, post and get, class based route-handling, cookies and etc...]
+- A full Back-end Capabilities
+- Django style route adding (See `examples/django-routing.py`)
 - An ORM and migrations feature (check-out -> examples/Lemon-App) (ORM supports strings only for now.)
 - React like syntax
 - middleware api
 - a terminal app to create app [create-lemon-app < app-name >]
 - Component Generator [https://github.com/Sas2k/Lemon-CLI]
 - Reactivity (See `examples/reactivity-example`)
+- Testing (See `examples/Tests.py`)
+- Custom Exception Handler (`examples/exception-handler.py`)
+- Blueprint Routing (`examples/Lemon-App`)
+
 
 > If you want to have live reloading try uvicorn: https://www.uvicorn.org/
 
@@ -59,11 +64,8 @@ Features:
 > [ ] - Not Done
 
 - [ ] Form Data Handling
-- [x] complex front-end stuff
-- [x] Models (Databases)
-- [x] API
-- [x] Docs
-- [x] Get to V1.0.0 (woop woop 🎉)
+- [ ] API Reference In Docs
+- [ ] States
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
@@ -109,6 +111,9 @@ App/
         - Models/
             - __init__.py
             - models.py
+        - Routes/
+            - __init__.py
+            - routes.py
         - Public/
             - css/
                 - style.css
@@ -134,6 +139,8 @@ pip: `pip install Lemon-Library`
 
 ## ✍️ Authors <a name = "authors"></a>
 
-- [@Sas2k](https://github.com/Sas2k) - Idea & Initial work
+<a href="https://github.com/Sas2k/Lemon/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Sas2k/Lemon" />
+</a>
 
 See also the list of [contributors](https://github.com/Sas2k/Lemon/contributors) who participated in this project.

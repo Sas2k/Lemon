@@ -12,24 +12,27 @@ parser.add_argument('--version', action='version', version='V.1.0.0')
 app_code = """from Lemon.components import Component
 from Lemon.Server.server import Server
 from Lemon.ui.buttons import Buttons
+
 from random import choice
 
 from models.model import insert_fake_data
 
-Root = Component(\"Lemon\", \"public/css/style.css\", \"public/js/script.js\")
-app = Server(static_dir=\"public\")
+from routes.route import route
+
+Root = Component("Lemon", "public/css/style.css", "public/js/script.js")
+app = Server(static_dir="public")
 
 class App(Component):
-    name = \"App\"
+    name = "App"
 
     def item(props: dict):
         lemons = ['Lemonade', '🍋', 'Lemon', 'Sour']
         return f'''
-        <div class=\"container text-center\">
+        <div class="container text-center">
             <h1 id="BIG">🍋</h1>
             <h1>Hello! edit this in app.py</h1>
             <h2>Here is a random lemon:<strong>{choice(lemons)}</strong></h2>
-            <primary_button text=\"Click Me\" onclick="pop_up('Hello Everybody!')"/>
+            <primary_button text="Click Me" onclick="pop_up('Hello Everybody!')"/>
         </div>
         '''
 
@@ -45,7 +48,10 @@ def home(request, response):
     insert_fake_data()
     response.text = Root.render('<App/>')
 
+app.add_route("/route", route)
+
 app.run()
+
 """
 
 css_code = """*, body {
@@ -76,7 +82,7 @@ var pop_up = (string) => {
 }
 """
 
-readme_code = """# create-lemon-app: <-name-of-app->
+readme_code = """# create-lemon-app: *
 
 ## Run it. 🚀
 
@@ -110,8 +116,46 @@ sql_model = """from Lemon.orm.DBManager import SqliteManager
 
 sql = SqliteManager("../model.db")
 # inserts some fake data to field1 and field2
-def insert_fake_date():
+def insert_fake_data():
     sql.insert("model", [("field1", "field2"), ("Hello", "World")])
+"""
+
+route = """from Lemon.components import Component
+from Lemon.ui.buttons import Buttons
+
+Root = Component("Lemon", "public/css/style.css", "public/js/script.js")
+
+class route(Component):
+    name = "route"
+
+    def item(props: dict):
+        return f'''
+        <div class="container text-center">
+            <h1 id="BIG">🍋</h1>
+            <h1>Hello! edit this in routes/route.py</h1>
+            <h2>Isn't the Lemon very <strong>BIG</strong></h2>
+            <primary_button text="Click Me" onclick="console.log('%cHello People!', 'color: blue; font-family: monospace; font-size: 20px;'"/>
+        </div>
+        '''
+
+Root.add(
+    [
+        route
+    ]
+)
+
+def route(request, response):
+    response.text = Root.render("<route/>")
+"""
+
+test_app = """import pytest
+
+def test_of_test(server, client):
+    RESPONSE_TEXT = "THIS IS COOL"
+    @api.route("/test")
+    def test():
+        return RESPONSE_TEXT
+    assert client.get("http://testserver/hey").text == RESPONSE_TEXT
 """
 
 def main():
@@ -134,7 +178,9 @@ def main():
         mkdir("public/css")
         mkdir("public/js")
         mkdir("models")
-    except Exception:
+        mkdir("Tests")
+        mkdir("routes")
+    except Exception as e:
         pass
 
     open("public/css/style.css", "w+", encoding="utf-8").write(css_code)
@@ -145,7 +191,17 @@ def main():
 
     open("models/__init__.py", "w+", encoding="utf-8").write("")
 
-    open("README.md", "w+", encoding="utf-8").write(readme_code)
+    open("routes/route.py", "w+", encoding="utf-8").write(route)
+
+    open("routes/__init__.py", "w+", encoding="utf-8").write("")
+
+    open("Tests/__init__.py", "w+", encoding="utf-8").write("")
+
+    open("Tests/test.py", "w+", encoding="utf-8").write(test_app)
+
+    open("requirements.txt", "w+", encoding="utf-8").write("Lemon-Library\npytest")
+
+    open("README.md", "w+", encoding="utf-8").write(readme_code.replace("*", app_name))
 
     print(f"App created @ /{args.app_name}/")
 

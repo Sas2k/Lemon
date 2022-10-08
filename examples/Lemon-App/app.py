@@ -1,9 +1,12 @@
 from Lemon.components import Component
 from Lemon.Server.server import Server
 from Lemon.ui.buttons import Buttons
+
 from random import choice
 
 from models.model import insert_fake_data
+
+from routes.route import route
 
 Root = Component("Lemon", "public/css/style.css", "public/js/script.js")
 app = Server(static_dir="public")
@@ -34,4 +37,7 @@ def home(request, response):
     insert_fake_data()
     response.text = Root.render('<App/>')
 
+app.add_route("/route", route)
+
 app.run()
+
