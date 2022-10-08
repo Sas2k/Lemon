@@ -8,7 +8,7 @@
 [![GitHub Issues](https://img.shields.io/github/issues/Sas2k/Lemon.svg)](https://github.com/kylelobo/The-Documentation-Compendium/issues)
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/Sas2k/Lemon.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
-[![Downloads](https://static.pepy.tech/personalized-badge/lemon-library?period=total&units=international_system&left_color=yellow&right_color=orange&left_text=PyPI%20Downloads)](https://pepy.tech/project/lemon-library)
+[![Downloads](https://static.pepy.tech/personalized-badge/lemon-library?period=total&units=international_system&left_color=yellow&right_color=orange&left_text=Downloads)](https://pepy.tech/project/lemon-library)
 
 </div>
 
