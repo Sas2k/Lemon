@@ -64,7 +64,7 @@ Features:
 > [ ] - Not Done
 
 - [ ] Form Data Handling
-- [ ] API Reference In Docs
+- [x] API Reference In Docs
 - [ ] States
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
