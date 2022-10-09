@@ -1,4 +1,4 @@
-# Tutorial Part 2: Writing the basic components.
+# Part 2: Writing the basic components.
 
 now, let's create a directory(which is a fancy term for a folder.) and name it `Components`
 

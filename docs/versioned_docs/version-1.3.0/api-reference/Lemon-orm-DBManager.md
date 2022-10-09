@@ -13,15 +13,15 @@ The SQLConnectionManager used in migrations
 
 ### Attributes, Properties and Functions
 
-- #### commit [Decorator(Functions)] | (operation)
+#### commit [Decorator(Functions)] | (operation)
 
 Commits a query.
 
-- #### create_table [Function] | (self, tablename, fields)
+#### create_table [Function] | (self, tablename, fields)
 
 creates a table
 
-- #### show_tables [Property(Function)] | (self)
+#### show_tables [Property(Function)] | (self)
 
 shows the tables in the database
 
@@ -40,11 +40,11 @@ sql.insert("authors", ["Paul", "age"], ["Paul", "25"])
 
 ```
 
-- ### commit [Decorator(function)] | (operation) < Developer-Function >
+### commit [Decorator(function)] | (operation) < Developer-Function >
 
 Commits the query.
 
-- ### create_table [Function] | (self, tablename, columns)
+### create_table [Function] | (self, tablename, columns)
 
 Creates a table in the Database.
 
@@ -54,7 +54,7 @@ sql = SqliteManager("model.db")
 sql.create_table("authors", ["name", "age"])
 ```
 
-- ### insert [Function] | (self, tablename, columns, values)
+### insert [Function] | (self, tablename, columns, values)
 
 inserts data to columns
 
@@ -64,7 +64,7 @@ sql = SqliteManager("model.db")
 sql.insert("authors", ["name", "age"], ["Paul", "25"])
 ```
 
-- ### select [Function] | (self, tablename, columns)
+### select [Function] | (self, tablename, columns)
 
 selects columns from the table.
 
@@ -75,7 +75,7 @@ sql = SqliteManager("model.db")
 sql.select("authors", ["name", "age"])
 ```
 
-- ### delete [Function] | (self, tablename, conditions, logic="AND")
+### delete [Function] | (self, tablename, conditions, logic="AND")
 
 Deletes a record from the table which matches the condition.
 
@@ -85,7 +85,7 @@ sql = SqliteManager("model.db")
 sql.delete("authors", ["name='paul'", "age=25"], "AND")
 ```
 
-- ### update [Function] | (self, tablename, columns, values)
+### update [Function] | (self, tablename, columns, values)
 
 Update values in the Database.
 

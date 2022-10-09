@@ -1,4 +1,4 @@
-# Tutorial Part 3: Building the api.
+# Part 3: Building the api.
 
 Now that we got the basic front-end down.
 

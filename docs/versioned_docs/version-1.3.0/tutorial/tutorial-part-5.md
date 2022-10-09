@@ -1,4 +1,4 @@
-# Tutorial Part 5: Styling the blog and finalizing.
+# Part 5: Styling the blog and finalizing.
 
 In this part we're going to style the posts.
 

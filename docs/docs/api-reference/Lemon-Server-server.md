@@ -19,11 +19,11 @@ app = server.Server(None) #place None here if you don't have any static files.
 
 ### Attributes, Properties and Functions
 
-- #### wsgi_app [Function] | (self, environ, start_response) | < Developer-Function >
+#### wsgi_app [Function] | (self, environ, start_response) | < Developer-Function >
 
 returns a response with environ.
 
-- #### add_route [Function] | (self, path, handler)
+#### add_route [Function] | (self, path, handler)
 
 This function adds route django style!.
 
@@ -34,7 +34,7 @@ def index(request, response):
 app.add_route("/", index)
 ```
 
-- #### add_exception_handler [Function] | (self, exception_handler)
+#### add_exception_handler [Function] | (self, exception_handler)
 
 Adds a sever exception handler.
 
@@ -45,7 +45,7 @@ def custom_exception_handler(request, response, exception_cls):
 app.add_exception_handler(custom_exception_handler)
 ```
 
-- #### route [Decorator(Function)] | (self, path)
+#### route [Decorator(Function)] | (self, path)
 
 the route decorator.
 
@@ -65,11 +65,11 @@ class Index():
         res.text = req.json
 ```
 
-- #### handle_request [Function] | (self, request) | < Developer-Function >
+#### handle_request [Function] | (self, request) | < Developer-Function >
 
 Handles incoming requests.
 
-- #### add_cookie [Function] | (self, response, key, value, max_age=None, expires=None, path="/", domain=None, Secure=False, httponly=False, samesite=None)
+#### add_cookie [Function] | (self, response, key, value, max_age=None, expires=None, path="/", domain=None, Secure=False, httponly=False, samesite=None)
 
 Creates a cookie 🍪
 
@@ -79,7 +79,7 @@ def index(request, response):
     add_cookie(response, "Hello", "world")
 ```
 
-- #### delete_cookie [Function] | (self, response, key, path="/", domain=None)
+#### delete_cookie [Function] | (self, response, key, path="/", domain=None)
 
 Deletes a cookie 🍪🤏🏽
 
@@ -89,7 +89,7 @@ def index(request, response):
     delete_cookie(response, "Hello")
 ```
 
-- #### get_cookie [Function] | (self, request, key)
+#### get_cookie [Function] | (self, request, key)
 
 Gets a cookie 📦
 
@@ -99,7 +99,7 @@ def index(request, response):
     get_cookie(request, "Hello")
 ```
 
-- #### add_middleware [Function] | (self, middleware_cls)
+#### add_middleware [Function] | (self, middleware_cls)
 
 Adds a middleware to run.
 
@@ -107,11 +107,11 @@ Adds a middleware to run.
 app.add_middleware(PrintMiddleWare) # <- Fake name "PrintMiddleWare"
 ```
 
-- #### test_session [Function] | (self, base_url="http://testserver") < Developer-Function >
+#### test_session [Function] | (self, base_url="http://testserver") < Developer-Function >
 
 The testing session used in tests.
 
-- #### run [Function] | (self, host="127.0.0.1", post=8000)
+#### run [Function] | (self, host="127.0.0.1", post=8000)
 
 Runs the app.
 

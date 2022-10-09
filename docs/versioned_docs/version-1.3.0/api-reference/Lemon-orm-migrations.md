@@ -30,7 +30,7 @@ The migrate command for the Lemon ORM
 
 ### Attributes, Properties and Functions
 
-- #### migrate [Function] | (self)
+#### migrate [Function] | (self)
 
 migrates the models to a Database.
 
@@ -40,7 +40,7 @@ The base function for the migrate function.
 
 ## Attributes, Properties and Functions
 
-- #### migrate [Function] | (self)
+#### migrate [Function] | (self)
 
 The migrate function which is used in base.py
 

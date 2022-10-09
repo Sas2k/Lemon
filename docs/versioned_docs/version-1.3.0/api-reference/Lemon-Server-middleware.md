@@ -29,22 +29,22 @@ The middleware base class
 
 ### Attributes, Properties and Functions
 
-- #### add [Function] | (self, middleware_cls) < Developer-Function >
+#### add [Function] | (self, middleware_cls) < Developer-Function >
 
 Adds a middleware.
 
-- #### process_request [Function] | (self, req) 
+#### process_request [Function] | (self, req) 
 
 Process's the middleware's requests
 
 > line 6~8 on example
 
-- #### process_response [Function] | (self, req)
+#### process_response [Function] | (self, req)
 
 Process's the middleware before sending back the response
 
 > line 10~11 on example
 
-- #### handle_request [Function] | (self, req, res) < Developer-Function >
+#### handle_request [Function] | (self, req, res) < Developer-Function >
 
 Handles Request that the class receives.

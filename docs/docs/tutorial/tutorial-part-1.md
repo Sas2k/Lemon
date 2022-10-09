@@ -1,4 +1,4 @@
-# Tutorial Part 1: Setting things up.
+# Part 1: Setting things up.
 
 Now, let's set thing up.
 

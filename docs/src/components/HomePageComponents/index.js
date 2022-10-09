@@ -1,17 +1,13 @@
 import React, { useEffect } from 'react';
 import styles from './styles.module.css';
-import Prism from 'prismjs';
 
-function Code({ code, language }) {
-    useEffect(() => {
-        Prism.highlightAll();
-    }, []);
+function Code({ code }) {
     return (
-        <div className={`Code `+ styles.codeBlock}>
-            <pre>
-                <code className={`language-${language}`}>{code}</code>
-            </pre>
-        </div>
+        <pre>
+            <code className={styles.Codeblock}>
+                {code}
+            </code>
+        </pre>
     );
   }
 
@@ -36,17 +32,28 @@ function Codeandtext(props) {
                 <h3>Components made easy.</h3>
                 <p>Components are isolated elements which have their own properties and states</p>
             </div>
-            <Code language="python" code={component_example}/>
+            <Code code={component_example}/>
         </div>
         <div className={styles.green_block}>
             <div className={styles.textBlock}>
                 <h3>Backend intertwined with Front-end.</h3>
                 <p>the backend is seamlessly connected with the backend, So you can connect to the DB while fixing the UI 🛠</p>
             </div>
-            <Code language="python" code={back_and_front_example}/>
+            <Code code={back_and_front_example}/>
         </div>
     </>
     );
+}
+
+function TutorialAndLinks(props){
+    return (
+        <>
+            <div className={styles.TutorialLinks}>
+                <a href="/Lemon/docs/lemon-in-3min"><button className={styles.GetStarted}>Get Started.</button></a>
+                <a className={styles.ToTutorial} href="/Lemon/docs/tutorial/intro-to-tutorial">Try the Tutorial →</a>
+            </div>
+        </>
+    );    
 }
 
 export default function HomePageComponents(props) {
@@ -54,6 +61,7 @@ export default function HomePageComponents(props) {
         <>
             <div>
                 <Codeandtext/>
+                <TutorialAndLinks/>
             </div>
         </>
     );

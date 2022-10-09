@@ -7,5 +7,5 @@ sidebar_position: 5
 
 the module containing the ORM.
 
-- ## [Lemon.orm.DBManager](Lemon-orm-DBManager)
-- ## [Lemon.orm.migrations](Lemon-orm-migrations)
+## [Lemon.orm.DBManager](Lemon-orm-DBManager)
+## [Lemon.orm.migrations](Lemon-orm-migrations)

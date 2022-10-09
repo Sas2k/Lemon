@@ -26,7 +26,7 @@ class TestComponent(Component):
 
 ### Attributes, Properties and Functions
 
-- #### add [Function] | (self, components: list or object)
+#### add [Function] | (self, components: list or object)
 
 Adds a component(s) to a list. to parse.
 
@@ -40,11 +40,11 @@ Root.add(
 )
 ```
 
-- #### parse [Function] | (self, Root, prop: list) | < Developer-Function >
+#### parse [Function] | (self, Root, prop: list) | < Developer-Function >
 
 The function that parses the string.
 
-- #### render [Function] | (self, app: str)
+#### render [Function] | (self, app: str)
 
 The function that will render the component
 
@@ -52,7 +52,7 @@ The function that will render the component
 response.text = Root.render("<WarningComponent/>")
 ```
 
-- #### item [Function] | (self, props: dict)
+#### item [Function] | (self, props: dict)
 
 The function where the components html/elements are present
 

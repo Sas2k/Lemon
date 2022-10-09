@@ -1,4 +1,4 @@
-# Tutorial Part 4: Storing the requests and Displaying them as Posts
+# Part 4: Storing the requests and Displaying them as Posts
 
 In this part, we're going to store the requests, and then we're going to display them. as pages.
 
