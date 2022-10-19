@@ -54,7 +54,9 @@ Features:
 
 > If you want to have live reloading try uvicorn: https://www.uvicorn.org/
 
-> If you don't think this isn't capable to handle anything check this out! -> https://portfolio-sas2k.vercel.app/ | https://github.com/Sas2k/portfolio
+> If you don't think this isn't capable to handle anything check these out! <br>
+> https://portfolio-sas2k.vercel.app/ | https://github.com/Sas2k/portfolio <br>
+> https://github.com/Sas2k/HTTP-Blog
 
 ## 🗒 To-Do <a name = "To-Do"></a>
 
@@ -64,7 +66,6 @@ Features:
 > [ ] - Not Done
 
 - [ ] Form Data Handling
-- [x] API Reference In Docs
 - [ ] States
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
@@ -76,23 +77,24 @@ Here is an example below
 from Lemon import Component
 from Lemon.server import Server
 
-app = Server(static_dir=None) #set the static_dir to none if there isn't any static diles
-Root = Component("Home Page", None, None) #Root component: where components are rendered
+app = Server(static_dir=None) 
+Root = Component("Home Page", None, None) #Root component
 
 class Home(Component):
     "Home Page Component"
     name = "Home"
     
-    def item(props: dict): #This is where html goes in.
+    def item(props: dict): 
+        "The Item Function: where the html and props are passed"
         return """
             <h1>Hello World!</h1>
         """
 
-Root.add([Home]) #Adds the components here.
+Root.add([Home])
 
 @app.route("/") #Route decorator
 def index(request, response):
-    home_page = Root.render("<Home/>") #Note: always use components in Root.render never HTML
+    home_page = Root.render("<Home/>")
     response.text = home_page
 
 app.run() #runs the app
