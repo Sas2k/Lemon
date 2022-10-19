@@ -76,19 +76,19 @@ Here is an example below
 from Lemon import Component
 from Lemon.server import Server
 
-app = Server(static_dir=None) #set the static_dir to none if there is no .css or .js files =The Default Folder for static is public=
-Root = Component("Home Page", None, None) #Root component: The component where your other components are rendered: The name inside is the name displayed on the tab, the 2 nones are for css and js file locations
+app = Server(static_dir=None) #set the static_dir to none if there isn't any static diles
+Root = Component("Home Page", None, None) #Root component: where components are rendered
 
 class Home(Component):
     "Home Page Component"
-    name = "Home" # Name of the component : REQUIRED
+    name = "Home"
     
-    def item(props: dict): #item function where the renderer calls to get your html and other code
+    def item(props: dict): #This is where html goes in.
         return """
             <h1>Hello World!</h1>
         """
 
-Root.add([Home]) #Add the Home component to the Root component
+Root.add([Home]) #Adds the components here.
 
 @app.route("/") #Route decorator
 def index(request, response):
