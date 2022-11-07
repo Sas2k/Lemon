@@ -1,5 +1,6 @@
 from .DBManager import SQLConnectionManager
 
+
 class Migrate:
     def __init__(self, model_list):
         self.model_list = model_list
@@ -12,10 +13,11 @@ class Migrate:
             Elem = element()
             print(f"{Elem.tablename} Migration")
             with SQLConnectionManager("model.db") as Connection:
-                Connection.create_table(tablename=Elem.tablename , fields=Elem.fields)
+                Connection.create_table(tablename=Elem.tablename, fields=Elem.fields)
             print()
 
-class MigrateCommand():
+
+class MigrateCommand:
     def __init__(self, model_list):
         self.model_list = model_list
         pass

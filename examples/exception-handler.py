@@ -4,6 +4,7 @@ from Lemon.components import Component
 app = server.Server(None)
 root = Component(app)
 
+
 class ExceptionComponent(Component):
     name = "ExceptionComponent"
 
@@ -35,19 +36,19 @@ class ExceptionComponent(Component):
         </div>
         """
 
+
 def custom_exception_handler(request, response, exception_cls):
     response.text = root.render("<ExceptionComponent/>")
 
+
 app.add_exception_handler(custom_exception_handler)
 
-root.add(
-    [
-        ExceptionComponent
-    ]
-)
+root.add([ExceptionComponent])
+
 
 @app.route("/")
 def index(request):
     raise AssertionError("ERRRRRRRROR! (So many R's)")
+
 
 app.run()

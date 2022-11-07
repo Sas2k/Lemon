@@ -5,14 +5,28 @@ By Sasen Perera 2022
 
 from ..components import Component
 
-class FormControl():
+
+class FormControl:
     def __init__(self) -> None:
         self.components = [self.Input, self.Select, self.Checkbox, self.Submit]
 
     class Input(Component):
         name = "Input"
+
         def item(props: dict):
-            args = ["type", "id", "placeholder", "value", "text", "rows", "cols", "disabled", "readonly", "required", "oninput"]
+            args = [
+                "type",
+                "id",
+                "placeholder",
+                "value",
+                "text",
+                "rows",
+                "cols",
+                "disabled",
+                "readonly",
+                "required",
+                "oninput",
+            ]
             for arg in args:
                 if arg not in list(props.keys()):
                     if arg == "type":
@@ -27,14 +41,15 @@ class FormControl():
                         props[arg] = ""
                 else:
                     pass
-            
+
             return f"""
             <label for=\"{props["id"]}\" class=\"form-label\">{props["text"]}</label>
             <input type=\"{props['type']}\" class=\"form-control\" id=\"{props['id']}\"{' rows='+props['rows']+' ' if props['type'] == 'textarea' else ''}{' cols='+props['cols']+' ' if props['type'] == 'textarea' else ' '}{'oninput="'+props['oninput']+'" ' if props['oninput'] != '' else ''} placeholder=\"{props['placeholder']}\" {props['disabled']} {props["readonly"]} {props["required"]}/>
             """
-    
+
     class Select(Component):
         name = "Select"
+
         def item(props: dict):
             args = ["id", "text", "options", "disabled", "readonly", "size"]
             for arg in args:
@@ -42,13 +57,15 @@ class FormControl():
                     if arg == "id":
                         raise ValueError("Lemon.FormControl.Select: id is required")
                     elif arg == "options":
-                        raise ValueError("Lemon.FormControl.Select: options is required")
+                        raise ValueError(
+                            "Lemon.FormControl.Select: options is required"
+                        )
                     else:
                         props[arg] = ""
                 else:
                     if arg == "options":
                         props[arg] = props[arg].split(",")
-            
+
             option_text = ""
             selected_text = props["options"][0]
             props["options"].remove(selected_text)
@@ -67,6 +84,7 @@ class FormControl():
 
     class Checkbox(Component):
         name = "Checkbox"
+
         def item(props: dict):
             output = f"""
             <div class=\"form-check\">
@@ -77,9 +95,10 @@ class FormControl():
             </div>
             """
             return output
-        
+
     class Submit(Component):
         name = "Submit"
+
         def item(props: dict):
             args = ["id", "text", "disabled", "readonly"]
             for arg in args:
@@ -90,7 +109,7 @@ class FormControl():
                         props[arg] = ""
                 else:
                     pass
-            
+
             return f"""
             <button type=\"submit\" class=\"btn btn-primary\" id=\"{props['id']}\" {props['disabled']} {props["readonly"]}>{props['text']}</button>
             """

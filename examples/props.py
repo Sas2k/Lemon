@@ -4,12 +4,14 @@ from Lemon.Server.server import Server
 Root = Component("Props")
 app = Server(static_dir=None)
 
+
 class test(Component):
 
     name = "test"
 
     def item(props: dict):
         return "<a href='/'><button>Click Me</button></a>"
+
 
 class Props(Component):
 
@@ -26,11 +28,16 @@ class Props(Component):
             <p>{props['p']}</h3>
         """
 
+
 Root.add([test, Props])
+
 
 @app.route("/")
 def title(request, response):
-    page = Root.render("""<Props title='Lemon' h1='Hello World!' p='This is generated in Python!'/><test/>""")
+    page = Root.render(
+        """<Props title='Lemon' h1='Hello World!' p='This is generated in Python!'/><test/>"""
+    )
     response.text = page
+
 
 app.run()

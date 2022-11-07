@@ -13,8 +13,10 @@ from .middleware import Middleware
 from requests import Session as RequestsSession
 from wsgiadapter import WSGIAdapter as RequestsWSGIAdapter
 
+
 class Server:
     """Server Methods"""
+
     def __init__(self, static_dir="public"):
         self.routes = {}
         self.exception_handler = None
@@ -35,7 +37,7 @@ class Server:
         path_info = environ["PATH_INFO"]
 
         if path_info.startswith("/public"):
-            environ["PATH_INFO"] = path_info[len("/public"):]
+            environ["PATH_INFO"] = path_info[len("/public") :]
             return self.whitenoise(environ, start_response)
 
         return self.middleware(environ, start_response)
@@ -49,10 +51,11 @@ class Server:
     def add_exception_handler(self, exception_handler):
         "Add Exception Handler"
         self.exception_handler = exception_handler
-    
+
     def route(self, path):
         "route decorator: @server.route('/path')"
         assert path not in self.routes, "Such route already exists."
+
         def wrapper(handler):
             self.routes[path] = handler
             return handler
@@ -97,14 +100,36 @@ class Server:
 
         return response
 
-    def add_cookie(self, response, key, value, max_age=None, expires=None, path="/", domain=None, secure=False, httponly=False, samesite=None):
+    def add_cookie(
+        self,
+        response,
+        key,
+        value,
+        max_age=None,
+        expires=None,
+        path="/",
+        domain=None,
+        secure=False,
+        httponly=False,
+        samesite=None,
+    ):
         "Add Cookie"
-        response.set_cookie(key, value, max_age=max_age, expires=expires, path=path, domain=domain, secure=secure, httponly=httponly, samesite=samesite)
+        response.set_cookie(
+            key,
+            value,
+            max_age=max_age,
+            expires=expires,
+            path=path,
+            domain=domain,
+            secure=secure,
+            httponly=httponly,
+            samesite=samesite,
+        )
 
     def delete_cookie(self, response, key, path="/", domain=None):
         "Delete Cookie"
         response.delete_cookie(key, path=path, domain=domain)
-    
+
     def get_cookie(self, request, key):
         "Get Cookie"
         return request.cookies.get(key)
@@ -122,10 +147,18 @@ class Server:
     def run(self, host="127.0.0.1", port=8000):
         "Runs app with waitress"
         host = host.lower()
-        print(f"Running on http://localhost:{port} | http://127.0.0.1:{port}" if host == "127.0.0.1" or host == "localhost" else f"Running on http://{host}:{port}")
+        print(
+            f"Running on http://localhost:{port} | http://127.0.0.1:{port}"
+            if host == "127.0.0.1" or host == "localhost"
+            else f"Running on http://{host}:{port}"
+        )
         print("To stop server press Ctrl+C")
         try:
-            webbrowser.open(f"http://localhost:{port}" if host == "localhost" or "127.0.0.1" else f"http://{host}:{port}")
+            webbrowser.open(
+                f"http://localhost:{port}"
+                if host == "localhost" or "127.0.0.1"
+                else f"http://{host}:{port}"
+            )
             try:
                 serve(self, host=host, port=port)
             except Exception as e:

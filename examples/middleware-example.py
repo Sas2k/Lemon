@@ -3,6 +3,7 @@ from Lemon.Server import server, middleware
 
 app = server.Server(None)
 
+
 class middleware_example(middleware):
     def process_request(self, req):
         print("Despatching ->", req.url)

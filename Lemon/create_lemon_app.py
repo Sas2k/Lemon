@@ -4,10 +4,10 @@ create-lemon-app
 from os import mkdir, chdir
 import argparse
 
-parser = argparse.ArgumentParser(description='Create a Lemon app.')
+parser = argparse.ArgumentParser(description="Create a Lemon app.")
 
-parser.add_argument('app_name', metavar='app_name', type=str)
-parser.add_argument('--version', action='version', version='V.1.0.0')
+parser.add_argument("app_name", metavar="app_name", type=str)
+parser.add_argument("--version", action="version", version="V.1.0.0")
 
 app_code = """from Lemon.components import Component
 from Lemon.Server.server import Server
@@ -158,6 +158,7 @@ def test_of_test(server, client):
     assert client.get("http://testserver/hey").text == RESPONSE_TEXT
 """
 
+
 def main():
     """Main Function: Create-Lemon-App"""
     args = parser.parse_args()
@@ -168,8 +169,8 @@ def main():
     except Exception:
         pass
     chdir(app_name)
-    
-    #creates app file then write to it
+
+    # creates app file then write to it
     open("app.py", "w+", encoding="utf-8").write(app_code)
     open("base.py", "w+", encoding="utf-8").write(sql_base)
 
@@ -204,6 +205,7 @@ def main():
     open("README.md", "w+", encoding="utf-8").write(readme_code.replace("*", app_name))
 
     print(f"App created @ /{args.app_name}/")
+
 
 if __name__ == "__main__":
     main()

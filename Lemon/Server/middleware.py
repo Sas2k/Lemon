@@ -4,6 +4,7 @@ By Sasen Perera 2022
 """
 from webob import Request, Response
 
+
 class Middleware:
     """Middleware Class"""
 

@@ -5,6 +5,7 @@ from Lemon.ui.forms import FormControl
 app = Server()
 Root = Component("Test", None, "public/script.js")
 
+
 class Test(Component):
 
     name = "Test"
@@ -20,15 +21,13 @@ class Test(Component):
         </div>
         """
 
-Root.add(
-    [
-        Test,
-        FormControl().components
-    ]
-)
+
+Root.add([Test, FormControl().components])
+
 
 @app.route("/")
 def index(request, response):
     response.text = Root.render("<Test/>")
+
 
 app.run()

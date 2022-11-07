@@ -6,6 +6,7 @@ from Lemon.ui.forms import FormControl
 Root = Component("UI-Demo")
 app = Server(static_dir=None)
 
+
 class Button(Component):
     name = "Button"
 
@@ -34,8 +35,10 @@ class Button(Component):
         </div>
         """
 
+
 class Forms(Component):
     name = "Forms"
+
     def item(props: dict):
         return f"""
         <div class=\"container\">
@@ -49,6 +52,7 @@ class Forms(Component):
         </div>
         """
 
+
 class index(Component):
     name = "index"
 
@@ -58,6 +62,7 @@ class index(Component):
         <Button/>
         <Forms/>
         """
+
 
 Root.add(
     [
@@ -69,10 +74,12 @@ Root.add(
     ]
 )
 
+
 @app.route("/")
-class index():
+class index:
     def get(self, request, response):
         html = Root.render("<index/>")
         response.text = html
+
 
 app.run()

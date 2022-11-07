@@ -1,3 +1,4 @@
+# IMPORTANT FOR FRAMEWORK USER
 parse
 waitress
 WebOb
@@ -5,3 +6,5 @@ whitenoise
 requests
 pytest
 requests-wsgi-adapter
+# IMPORTANT FOR FRAMEWORK DEVELOPER
+black

@@ -7,6 +7,7 @@ from Server.server import Server
 def server():
     return Server()
 
+
 @pytest.fixture
 def client(server):
     return server.test_session()

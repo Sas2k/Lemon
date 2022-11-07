@@ -138,6 +138,11 @@ pip: `pip install Lemon-Library`
 - [Waitress](https://pypi.org/project/waitress/)
 - [WebOb](https://pypi.org/project/WebOb/)
 - [Parse](https://pypi.org/project/parse)
+- [whitenoise](https://pypi.org/project/whitenoise/)
+- [requests](https://pypi.org/project/requests/)
+- [pytest](https://pypi.org/project/pytest/)
+- [requests (wsgi-adapter)](https://pypi.org/project/requests-wsgi-adapter/)
+- [black](https://pypi.org/project/black/)
 
 ## ✍️ Authors <a name = "authors"></a>
 

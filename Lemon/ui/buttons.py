@@ -4,13 +4,24 @@ By Sasen Perera 2022
 """
 from ..components import Component
 
-class Buttons():
+
+class Buttons:
     def __init__(self) -> None:
-        self.components = [self.primary_button, self.secondary_button, self.success_button, self.danger_button, self.warning_button, self.info_button, self.light_button, self.dark_button, self.link_button]
-    
+        self.components = [
+            self.primary_button,
+            self.secondary_button,
+            self.success_button,
+            self.danger_button,
+            self.warning_button,
+            self.info_button,
+            self.light_button,
+            self.dark_button,
+            self.link_button,
+        ]
+
     class primary_button(Component):
         name = "primary_button"
-         
+
         def item(props: dict):
             if "text" not in list(props.keys()):
                 raise ValueError("Lemon.primary_button: text is required")
@@ -23,7 +34,6 @@ class Buttons():
 
     class secondary_button(Component):
         name = "secondary_button"
-         
 
         def item(props: dict):
             if "text" not in list(props.keys()):
@@ -37,7 +47,7 @@ class Buttons():
 
     class success_button(Component):
         name = "success_button"
-         
+
         def item(props: dict):
             if "text" not in list(props.keys()):
                 raise ValueError("Lemon.success_button: text is required")
@@ -58,7 +68,7 @@ class Buttons():
                 props["onclick"] = ""
             elif "size" not in list(props.keys()):
                 props["size"] = ""
-            
+
             return f"""<button type=\"button\" class=\"btn btn-danger btn-{props['size']}\" onclick=\"{props["onclick"]}\">{props["text"]}</button>"""
 
     class warning_button(Component):
@@ -71,7 +81,7 @@ class Buttons():
                 props["onclick"] = ""
             elif "size" not in list(props.keys()):
                 props["size"] = ""
-            
+
             return f"""<button type=\"button\" class=\"btn btn-warning btn-{props['size']}\" onclick=\"{props["onclick"]}\">{props["text"]}</button>"""
 
     class info_button(Component):
@@ -102,7 +112,7 @@ class Buttons():
 
     class dark_button(Component):
         name = "dark_button"
-         
+
         def item(props: dict):
             if "text" not in list(props.keys()):
                 raise ValueError("Lemon.dark_button: text is required")
@@ -115,7 +125,7 @@ class Buttons():
 
     class link_button(Component):
         name = "link_button"
-         
+
         def item(props: dict):
             if "text" not in list(props.keys()):
                 raise ValueError("Lemon.link_button: text is required")
@@ -123,5 +133,5 @@ class Buttons():
                 props["onclick"] = ""
             elif "size" not in list(props.keys()):
                 props["size"] = ""
-            
+
             return f"""<button type=\"button\" class=\"btn btn-link{props['size']}\" onclick=\"{props["onclick"]}\">{props["text"]}</button>"""
