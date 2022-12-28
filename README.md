@@ -35,7 +35,7 @@ A full-stack framework built with python. The library is shipped with Bootstrap 
 
 Docs: https://sas2k.github.io/Lemon
 
-Discord Server: https://discord.gg/wg239Cpf
+Discord Server: https://discord.gg/Dw6hCp3usF
 
 Features:
 - UI Library (Development)
