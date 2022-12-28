@@ -2,13 +2,22 @@ from setuptools import setup, find_packages
 
 long_description = open("README.md", "r", encoding="utf-8").read()
 # get packages from requirements.txt
-with open("requirements.txt") as f:
-    requirements = f.read().splitlines()
+
+requirements = [
+    "parse",
+    "waitress",
+    "WebOB",
+    "whitenoise",
+    "requests",
+    "pytest",
+    "requests-wsgi-adapter",
+    "black",
+]
 
 
 setup(
     name="Lemon-Library",
-    version="1.3.1",
+    version="1.3.2",
     packages=find_packages(),
     install_requires=requirements,
     author="Sasen Perera",
