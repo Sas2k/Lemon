@@ -10,7 +10,6 @@ from webob import Request, Response
 from waitress import serve
 from whitenoise import WhiteNoise
 from .middleware import Middleware
-from .form import Form
 from requests import Session as RequestsSession
 from wsgiadapter import WSGIAdapter as RequestsWSGIAdapter
 
@@ -76,12 +75,6 @@ class Server:
                 return handler, parse_result.named
 
         return None, None
-
-    def form(self, request):
-        "Form"
-        form = Form(request)
-        form.parse()
-        return form
 
     def handle_request(self, request):
         """Handle Requests"""

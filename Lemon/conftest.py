@@ -2,7 +2,6 @@ import pytest
 
 from Server.server import Server
 
-
 @pytest.fixture
 def server():
     return Server()

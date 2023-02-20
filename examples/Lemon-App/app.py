@@ -11,31 +11,33 @@ from routes.route import route
 Root = Component("Lemon", "public/css/style.css", "public/js/script.js")
 app = Server(static_dir="public")
 
-
 class App(Component):
     name = "App"
 
     def item(props: dict):
-        lemons = ["Lemonade", "🍋", "Lemon", "Sour"]
-        return f"""
+        lemons = ['Lemonade', '🍋', 'Lemon', 'Sour']
+        return f'''
         <div class="container text-center">
             <h1 id="BIG">🍋</h1>
             <h1>Hello! edit this in app.py</h1>
             <h2>Here is a random lemon:<strong>{choice(lemons)}</strong></h2>
             <primary_button text="Click Me" onclick="pop_up('Hello Everybody!')"/>
         </div>
-        """
+        '''
 
-
-Root.add([App, Buttons().components])
-
+Root.add(
+    [
+    App,
+    Buttons().components
+    ]
+)
 
 @app.route("/")
 def home(request, response):
     insert_fake_data()
-    response.text = Root.render("<App/>")
-
+    response.text = Root.render('<App/>')
 
 app.add_route("/route", route)
 
 app.run()
+

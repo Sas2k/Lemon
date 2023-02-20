@@ -114,10 +114,13 @@ migrate(model_list).migrate()"""
 
 sql_model = """from Lemon.orm.DBManager import SqliteManager
 
-sql = SqliteManager("../model.db")
+sql = SqliteManager("model.db")
 # inserts some fake data to field1 and field2
 def insert_fake_data():
-    sql.insert("model", [("field1", "field2"), ("Hello", "World")])
+    sql.insert("model", ("field1", "field2"), ("Hello", "World"))
+    print(sql.select("model", ("field1", "field2")))
+    print("From model.py")
+    sql.delete("model", ("field1='Hello'", "field2='World'"))
 """
 
 route = """from Lemon.components import Component
@@ -155,7 +158,7 @@ def test_of_test(server, client):
     @api.route("/test")
     def test():
         return RESPONSE_TEXT
-    assert client.get("http://testserver/hey").text == RESPONSE_TEXT
+    assert client.get("http://testserver/test").text == RESPONSE_TEXT
 """
 
 

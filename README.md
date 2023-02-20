@@ -14,20 +14,20 @@
 
 ---
 
-<p align="center"> An Experimental Full-Stack Framework For Python. (Still in Development)
+<p align="center"> An Experimental Full-Stack Framework For Python.
     <br> 
 </p>
 
 ## 📝 Table of Contents
 
 - [📝 Table of Contents](#-table-of-contents)
-- [🧐 About <a name = "about"></a>](#-about-)
-- [🗒 To-Do <a name = "To-Do"></a>](#-to-do-)
-- [🏁 Getting Started <a name = "getting_started"></a>](#-getting-started-)
+- [🧐 About ](#-about-)
+- [🗒 To-Do ](#-to-do-)
+- [🏁 Getting Started ](#-getting-started-)
   - [Folder Structure for apps](#folder-structure-for-apps)
   - [Installing](#installing)
-- [⛏️ Built Using <a name = "built_using"></a>](#️-built-using-)
-- [✍️ Authors <a name = "authors"></a>](#️-authors-)
+- [⛏️ Built Using ](#️-built-using-)
+- [✍️ Authors ](#️-authors-)
 
 ## 🧐 About <a name = "about"></a>
 
