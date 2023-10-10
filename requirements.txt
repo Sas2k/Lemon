@@ -6,5 +6,6 @@ whitenoise
 requests
 pytest
 requests-wsgi-adapter
+rich
 # IMPORTANT FOR FRAMEWORK DEVELOPER
 black

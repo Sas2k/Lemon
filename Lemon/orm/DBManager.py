@@ -4,6 +4,7 @@ By Sasen Perera 2023
 """
 
 import sqlite3 as sql3
+from rich import print
 
 class SQLConnectionManager:
     """SQL Connection Manager"""
@@ -16,7 +17,7 @@ class SQLConnectionManager:
 
     def __enter__(self):
         """Start the connection"""
-        print("Connection started ...")
+        print("[green]Connection started ...[/green]")
         self.connection = sql3.connect(self.filename)
         self.cursor = self.connection.cursor()
         return self
@@ -26,7 +27,7 @@ class SQLConnectionManager:
         def wrapper(self, *args, **kwargs):
             operation(self, *args, **kwargs)
             self.connection.commit()
-            print("Lemon.orm: Commit Successful")
+            print("Lemon.orm: [green]Commit Successful[/green]")
 
         return wrapper
 
@@ -41,9 +42,9 @@ class SQLConnectionManager:
             self.cursor.execute(drop_command)
             self.cursor.execute(create_command)
         except sql3.Error as er:
-            print(f"SQLite error: {' '.join(er.args)}")
+            print(f"[bold red]SQLite error: {' '.join(er.args)}[/bold red]")
         finally:
-            print(f"{tablename}: created successfully!")
+            print(f"[green]{tablename}: created successfully![/green]")
 
     @property
     def show_tables(self):
@@ -53,7 +54,7 @@ class SQLConnectionManager:
 
     def __exit__(self, type, value, traceback):
         """End the connection"""
-        print("Connection ended ...")
+        print("[yellow]Connection ended ...[yellow]")
         self.connection.close()
 
 
@@ -79,7 +80,7 @@ class SqliteManager:
             op = operation(self, *args, **kwargs)
             op
             self.connection.commit()
-            print("Lemon.orm: Commit Successful")
+            print("Lemon.orm: [green]Commit Successful[/green]")
             return op
 
         return wrapper
@@ -98,7 +99,7 @@ class SqliteManager:
         except sql3.Error as er:
             print(f"SQLite error: {' '.join(er.args)}")
         finally:
-            print(f"{tablename}: created successfully!")
+            print(f"{tablename}: [green]created successfully![/green]")
 
     @commit
     def insert(self, tablename, columns, values):
@@ -110,7 +111,7 @@ class SqliteManager:
         try:
             self.cursor.execute(command)
         except sql3.Error as er:
-            print(f"SQLite error: {' '.join(er.args)}")
+            print(f"SQLite error: [bold red]{' '.join(er.args)}[/bold red]")
 
     @commit
     def select(self, tablename, columns):
@@ -136,9 +137,9 @@ class SqliteManager:
         try:
             self.cursor.execute(command)
         except sql3.Error as er:
-            print(f"SQLite error: {' '.join(er.args)}")
+            print(f"[bold red]SQLite error: {' '.join(er.args)}[/bold red]")
         finally:
-            print(f"{tablename}: deleted successfully!")
+            print(f"{tablename}: [green]deleted successfully![/green]")
 
     @commit
     def update(self, tablename, columns, values):
@@ -162,7 +163,7 @@ class SqliteManager:
             except sql3.Error as er:
                 print(f"SQLite error: {' '.join(er.args)}")
             finally:
-                print(f"{tablename}: updated successfully!")
+                print(f"{tablename}: [green]updated successfully![/green]")
 
     def __exit__(self, type, value, traceback):
         """End the connection"""

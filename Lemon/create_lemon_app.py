@@ -2,6 +2,8 @@
 create-lemon-app
 """
 from os import mkdir, chdir
+from rich.progress import Progress
+
 import argparse
 
 parser = argparse.ArgumentParser(description="Create a Lemon app.")
@@ -162,7 +164,7 @@ def test_of_test(server, client):
 """
 
 
-def main():
+def main(progress_bar):
     """Main Function: Create-Lemon-App"""
     args = parser.parse_args()
 
@@ -177,6 +179,9 @@ def main():
     open("app.py", "w+", encoding="utf-8").write(app_code)
     open("base.py", "w+", encoding="utf-8").write(sql_base)
 
+    progress.update(progress_bar, advance=25)
+    
+
     try:
         mkdir("public")
         mkdir("public/css")
@@ -184,24 +189,30 @@ def main():
         mkdir("models")
         mkdir("Tests")
         mkdir("routes")
+        progress.update(progress_bar, advance=25)
     except Exception as e:
+        progress.update(progress_bar, advance=15)
         pass
 
     open("public/css/style.css", "w+", encoding="utf-8").write(css_code)
-
     open("public/js/script.js", "w+", encoding="utf-8").write(js_code)
 
-    open("models/model.py", "w+", encoding="utf-8").write(sql_model)
+    progress.update(progress_bar, advance=5)
 
+    open("models/model.py", "w+", encoding="utf-8").write(sql_model)
     open("models/__init__.py", "w+", encoding="utf-8").write("")
 
-    open("routes/route.py", "w+", encoding="utf-8").write(route)
+    progress.update(progress_bar, advance=5)
 
+    open("routes/route.py", "w+", encoding="utf-8").write(route)
     open("routes/__init__.py", "w+", encoding="utf-8").write("")
 
-    open("Tests/__init__.py", "w+", encoding="utf-8").write("")
+    progress.update(progress_bar, advance=5)
 
+    open("Tests/__init__.py", "w+", encoding="utf-8").write("")
     open("Tests/test.py", "w+", encoding="utf-8").write(test_app)
+
+    progress.update(progress_bar, advance=5)
 
     open("requirements.txt", "w+", encoding="utf-8").write("Lemon-Library\npytest")
 
@@ -209,6 +220,10 @@ def main():
 
     print(f"App created @ /{args.app_name}/")
 
+    progress.update(progress_bar, advance=15)
+
 
 if __name__ == "__main__":
-    main()
+    with Progress() as progress:
+        main_progress = progress.add_task("[bold green]Creating App...[/bold green]", total=100)
+        main(main_progress)

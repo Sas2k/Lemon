@@ -13,6 +13,7 @@ from .middleware import Middleware
 from requests import Session as RequestsSession
 from wsgiadapter import WSGIAdapter as RequestsWSGIAdapter
 
+from rich import print
 
 class Server:
     """Server Methods"""
@@ -148,9 +149,9 @@ class Server:
         "Runs app with waitress"
         host = host.lower()
         print(
-            f"Running on http://localhost:{port} | http://127.0.0.1:{port}"
+            f"Running on [underline blue]http://localhost:{port} | http://127.0.0.1:{port}[/underline blue]"
             if host == "127.0.0.1" or host == "localhost"
-            else f"Running on http://{host}:{port}"
+            else f"Running on [underline blue]http://{host}:{port}[/underline blue]"
         )
         print("To stop server press Ctrl+C")
         try:
@@ -162,6 +163,6 @@ class Server:
             try:
                 serve(self, host=host, port=port)
             except Exception as e:
-                print(f"lemon.server: {e}")
+                print(f"[bold red]lemon.server: {e}[/bold red]")
         except Exception as e:
-            print(f"Lemon.Server: {e}")
+            print(f"[bold red]Lemon.Server: {e}[/bold red]")
