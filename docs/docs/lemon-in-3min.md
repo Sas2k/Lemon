@@ -32,7 +32,7 @@ cd my-website
 python app.py
 ```
 
-then visit localhost:8000
+then visit localhost:5000
 
 The `cd` command changes the current directory to the website dir,
 
