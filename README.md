@@ -65,8 +65,8 @@ Features:
 > [\*] - doing
 > [ ] - Not Done
 
-- [ ] Form Data Handling
-- [ ] States
+- [ ] Form Data Handling (Currently being Developed)
+- [ ] States (Currently being Developed)
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
