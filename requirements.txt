@@ -7,5 +7,6 @@ requests
 pytest
 requests-wsgi-adapter
 rich
+build
 # IMPORTANT FOR FRAMEWORK DEVELOPER
 black
