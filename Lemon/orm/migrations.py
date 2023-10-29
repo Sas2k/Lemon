@@ -17,11 +17,11 @@ class Migrate:
     def migrate(self):
         """Migrate the database"""
 
-        print("Begin database Migration ...")
+        print("[green underline]Begin database Migration ...[/green underline]")
         for element in self.model_list:
             print()
             Elem = element()
-            print(f"{Elem.tablename} Migration")
+            print(f"[yello]{Elem.tablename}[/yellow] Migration")
             with SQLConnectionManager("model.db") as Connection:
                 Connection.create_table(tablename=Elem.tablename, fields=Elem.fields)
             print()

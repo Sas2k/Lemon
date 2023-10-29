@@ -74,8 +74,8 @@ Docs Are still in Development Try heading over to `/examples` for some idea.
 Here is an example below
 
 ```python
-from Lemon import Component
-from Lemon.server import Server
+from Lemon.components import Component
+from Lemon.Server.server import Server
 
 app = Server(static_dir=None) 
 Root = Component("Home Page", None, None) #Root component
