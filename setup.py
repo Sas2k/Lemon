@@ -17,7 +17,7 @@ requirements = [
 
 setup(
     name="Lemon-Library",
-    version="1.3.6",
+    version="1.3.8",
     packages=find_packages(),
     install_requires=requirements,
     author="Sasen Perera",
