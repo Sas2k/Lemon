@@ -12,12 +12,13 @@ requirements = [
     "pytest",
     "requests-wsgi-adapter",
     "black",
+    "rich"
 ]
 
 
 setup(
     name="Lemon-Library",
-    version="1.3.8",
+    version="1.3.9",
     packages=find_packages(),
     install_requires=requirements,
     author="Sasen Perera",
