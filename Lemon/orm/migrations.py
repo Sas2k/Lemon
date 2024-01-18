@@ -21,7 +21,7 @@ class Migrate:
         for element in self.model_list:
             print()
             Elem = element()
-            print(f"[yello]{Elem.tablename}[/yellow] Migration")
+            print(f"[yellow]{Elem.tablename}[/yellow] Migration")
             with SQLConnectionManager("model.db") as Connection:
                 Connection.create_table(tablename=Elem.tablename, fields=Elem.fields)
             print()

@@ -102,14 +102,9 @@ class Component:
 
         body_code = parse_html(component, Root)
         return f"""{body_code}"""
-
-    def render(self, app: str):
-        """Render App"""
-        app = app.split("\n") if "\n" in app else app.split("/>")
-        bootstrap5_css_cdn = '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">'
-        bootstrap5_js_cdn = '<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>'
-        html = f'<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1"><title>{self.name}</title>{bootstrap5_css_cdn}{self.style}</head><body>'
-        reactive_code = 'let data={message:""},target=null;class Dep{constructor(){this.subscribers=[]}depend(){target&&!this.subscribers.includes(target)&&this.subscribers.push(target)}notify(){this.subscribers.forEach(e=>e())}}Object.keys(data).forEach(e=>{let t=data[e],s=new Dep;Object.defineProperty(data,e,{get:()=>(s.depend(),t),set(e){t=e,s.notify()}})});let renderFunction=()=>{document.getElementById("message").innerHTML=data.message},watcher=function(e){(target=e)(),target=null};'
+    
+    def render_component(self, app: str):
+        rendered_body = ""
         for component in app:
             if component != "":
                 component = component.replace("<", "").replace("\t", "")
@@ -132,14 +127,26 @@ class Component:
                     props = {}
 
                 if component_name in self.components.keys():
-                    html += self.components[component_name].parse(
+                    rendered_body += self.components[component_name].parse(
                         self.components[component_name], self.components, props
                     )
                 else:
                     raise ValueError("Lemon.Component: component not found/registered")
             else:
                 pass
+
+        return rendered_body
+
+    def render(self, app: str):
+        """Render App"""
+        app = app.split("\n") if "\n" in app else app.split("/>")
+        bootstrap5_css_cdn = '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">'
+        bootstrap5_js_cdn = '<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>'
+        html = f'<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1"><title>{self.name}</title>{bootstrap5_css_cdn}{self.style}</head><body>'
+        reactive_code = 'let data={message:""},target=null;class Dep{constructor(){this.subscribers=[]}depend(){target&&!this.subscribers.includes(target)&&this.subscribers.push(target)}notify(){this.subscribers.forEach(e=>e())}}Object.keys(data).forEach(e=>{let t=data[e],s=new Dep;Object.defineProperty(data,e,{get:()=>(s.depend(),t),set(e){t=e,s.notify()}})});let renderFunction=()=>{document.getElementById("message").innerHTML=data.message},watcher=function(e){(target=e)(),target=null};'
+        html += self.render_component(app)
         html += f"{bootstrap5_js_cdn}<script>{reactive_code}</script>{self.script}</body></html>"
+        
         return html
 
     def item(self, props: dict):
